@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateApplicationsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('applications', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('vacancy_id');
+            $table->string('apl_no');
+            $table->enum('status',['1','2','3','4'])->default('1');
+            $table->enum('is_starred',['Yes','No'])->default('No');
+            $table->timestamps();
+
+            $table->foreign('vacancy_id')->references('id')->on('vacancies');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('applications');
+    }
+}

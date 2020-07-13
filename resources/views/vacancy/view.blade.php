@@ -1,0 +1,67 @@
+@extends('layouts.app', [
+    'class' => 'login-page',
+    'elementActive' => ''
+])
+
+@section('content')
+    <div class="content col-md-12 ml-auto mr-auto">
+        <div class="header py-5 pb-7 pt-lg-9">
+            <div class="container col-md-10">
+                <div class="header-body  mb-7">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-md-12 pt-5">
+                            <div class ="content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Vacancy Info</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Job Title</th>
+                                                            <td><strong>{{$vacancy->job_title}}</strong></td>
+                                                              </tr>
+                                                              <tr>
+                                                                <th>Job Description</th>
+                                                              <td> {!! $vacancy->job_desc !!}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                <th>Requirements</th>
+                                                              <td> {!! $vacancy->job_req !!}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                <th>Location</th>
+                                                              <td>{{$vacancy->location}}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                <th>Job Type</th>
+                                                              <td>{{$vacancy->job_type}}</td>
+                                                              </tr>
+                                                        </tbody>
+                                                    </table>
+                                                <a href="{{route('create-application', $vacancy)}}"><button type="button" class="btn btn-success">Apply Now</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            demo.checkFullPageBackgroundImage();
+        });
+    </script>
+@endpush
