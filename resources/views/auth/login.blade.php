@@ -5,8 +5,6 @@
 
 @section('content')
     <div class="content">
-
-
         <div class="content col-md-6 ml-auto mr-auto">
             <div class="header py-5 pb-7 pt-lg-9">
                 <div class="container col-md-10">

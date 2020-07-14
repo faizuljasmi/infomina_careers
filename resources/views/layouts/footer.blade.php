@@ -13,6 +13,7 @@
                     <script>
                         document.write(new Date().getFullYear())
                     </script></a>
+                    Infomina Sdn. Bhd.
                 </span>
             </div>
         </div>

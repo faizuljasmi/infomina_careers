@@ -60,7 +60,7 @@ The above copyright notice and this permission notice shall be included in all c
     <meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/209/opt_pd_laravel_thumbnail.jpg"/>
     <meta property="og:description" content="Start your development with a Bootstrap 4 Admin Dashboard built for Laravel Framework 5.5 and Up." />
     <meta property="og:site_name" content="Creative Tim" />
-    
+
     <title>
         {{ __('Paper Dashboard by Creative Tim') }}
     </title>
@@ -121,7 +121,7 @@ The above copyright notice and this permission notice shall be included in all c
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
             <div class="wrapper">
 
                 <div class="sidebar" data-color="white" data-active-color="danger">
@@ -296,7 +296,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="col-12">
                                                     </div>
 
@@ -323,7 +323,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </div>
                         <div class="card-footer py-4">
                             <nav class="d-flex justify-content-end" aria-label="...">
-                                
+
                             </nav>
                         </div>
                     </div>
@@ -419,7 +419,7 @@ The above copyright notice and this permission notice shall be included in all c
             </li>
         </ul>
     </div>
-</div>        
+</div>
     <!--   Core JS Files   -->
     <script src="{{ asset('paper') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('paper') }}/js/core/popper.min.js"></script>
@@ -437,7 +437,7 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="{{ asset('paper') }}/demo/demo.js"></script>
     <!-- Sharrre libray -->
     <script src="{{ asset('paper') }}/demo/jquery.sharrre.js"></script>
-    
+
     @stack('scripts')
 
     @include('layouts.navbars.fixed-plugin-js')
