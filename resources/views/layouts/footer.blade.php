@@ -4,7 +4,6 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-
                 </ul>
             </nav>
             <div class="credits ml-auto">

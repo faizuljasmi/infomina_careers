@@ -354,8 +354,8 @@
                     <tbody>
                         <tr>
                             <td>Last viewed by</td>
-                            <td>{{$apl_log_viewed->user->name}}</td>
-                            <td>{{$apl_log_viewed->created_at->diffForHumans()}}</td>
+                            <td>{{ ($apl_log_viewed != null ? $apl_log_viewed->user->name:"-") }}</td>
+                            <td>{{ ($apl_log_viewed != null ? $apl_log_viewed->created_at->diffForHumans():"-") }}</td>
                         </tr>
                         <tr>
                             <td>Processed by</td>
