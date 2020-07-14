@@ -28,13 +28,15 @@
                                     @foreach($applications as $ap)
                                     <tr>
                                     <td>{{$ap->vacancy->job_title}}</td>
-                                    @if($ap->status == 1)
+                                    @if($ap->status == "Submitted")
                                     <td>Open</td>
-                                    @elseif($ap->status == 2)
+                                    @elseif($ap->status == "Processed")
                                     <td>Reviewed</td>
-                                    @elseif($ap->status == 3)
+                                    @elseif($ap->status == "Called")
                                     <td>Called for Interview</td>
-                                    @else
+                                    @elseif($ap->status == "Accepted")
+                                    <td>Accepted</td>
+                                    @elseif($ap->status == "Denied")
                                     <td>Denied</td>
                                     @endif
                                     <td>{{$ap->metas[1]->meta_value}}</td>

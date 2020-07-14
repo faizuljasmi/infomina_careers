@@ -32,15 +32,16 @@
                                         </div>
                                         @endif
                                         <div class="card-body">
-                                            <form class="needs-validation" novalidate method="POST" action="{{route('submit-application', $vacancy)}}"
-                                            enctype="multipart/form-data" id="submit-application">
-                                            @csrf
+                                            <form class="needs-validation" novalidate method="POST"
+                                                action="{{route('submit-application', $vacancy)}}"
+                                                enctype="multipart/form-data" id="submit-application">
+                                                @csrf
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label class="float-left" for="applied_for">Position Applied
                                                             for</label>
-                                                        <input type="text" class="form-control" id="applied_for" name="applied_for"
-                                                            value="{{$vacancy->job_title}}" readonly>
+                                                        <input type="text" class="form-control" id="applied_for"
+                                                            name="applied_for" value="{{$vacancy->job_title}}" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="p-3 mb-2 border rounded border-dark bg-light">
@@ -48,8 +49,8 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label class="float-left" for="applicant_name">Name</label>
-                                                            <input type="text" class="form-control" id="applicant_name" name="applicant_name"
-                                                                placeholder="Full Name" required>
+                                                            <input type="text" class="form-control" id="applicant_name"
+                                                                name="applicant_name" placeholder="Full Name" required>
                                                             <div class="invalid-feedback">
                                                                 Fill in your name, or else we'll call you Bot#217 :)
                                                             </div>
@@ -62,8 +63,9 @@
                                                                 (without -)</label>
                                                             <input type="text"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                class="form-control" id="applicant_ic" name="applicant_ic"
-                                                                placeholder="IC No." maxLength="12" required>
+                                                                class="form-control" id="applicant_ic"
+                                                                name="applicant_ic" placeholder="IC No." maxLength="12"
+                                                                required>
                                                             <div class="invalid-feedback">
                                                                 Your forgot your IC number
                                                             </div>
@@ -74,8 +76,9 @@
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left"
                                                                 for="applicant_gender">Gender</label>
-                                                            <select class="form-control" id="applicant_gender" name="applicant_gender"
-                                                                onchange="checkGender()" required>
+                                                            <select class="form-control" id="applicant_gender"
+                                                                name="applicant_gender" onchange="checkGender()"
+                                                                required>
                                                                 <option value="">Choose One</option>
                                                                 <option value="Male">Male</option>
                                                                 <option value="Female">Female</option>
@@ -91,9 +94,10 @@
                                                             <label class="float-left"
                                                                 for="applicant_marital_stat">Marital
                                                                 Status</label>
-                                                            <select class="form-control" id="applicant_marital_stat" name="applicant_marital_stat"
-                                                            onchange="checkGender()" required>
-                                                                <option value=" ">Choose one</option>
+                                                            <select class="form-control" id="applicant_marital_stat"
+                                                                name="applicant_marital_stat" onchange="checkGender()"
+                                                                required>
+                                                                <option value="">Choose one</option>
                                                                 <option value="Single">Single</option>
                                                                 <option value="Married">Married</option>
                                                             </select>
@@ -110,7 +114,8 @@
                                                             <label class="float-left"
                                                                 for="applicant_email">Email</label>
                                                             <input type="email" class="form-control"
-                                                                id="applicant_email" name="applicant_email" placeholder="Email" required>
+                                                                id="applicant_email" name="applicant_email"
+                                                                placeholder="Email" required>
                                                             <div class="invalid-feedback">
                                                                 It's important that we get your email
                                                             </div>
@@ -124,7 +129,8 @@
                                                                 (Mobile)</label>
                                                             <input type="text" maxlength="12"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                class="form-control" id="applicant_tel_mobile" name="applicant_tel_mobile" required>
+                                                                class="form-control" id="applicant_tel_mobile"
+                                                                name="applicant_tel_mobile" required>
                                                             <div class="invalid-feedback">
                                                                 Please fill in your phone number
                                                             </div>
@@ -137,7 +143,8 @@
                                                                 (Office)</label>
                                                             <input type="text" maxlength="12"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                class="form-control" id="applicant_tel_office" name="applicant_tel_office">
+                                                                class="form-control" id="applicant_tel_office"
+                                                                name="applicant_tel_office">
                                                             <div class="valid-feedback">
                                                                 Two phones...fancy
                                                             </div>
@@ -152,15 +159,16 @@
                                                                 currently suffering from any serious illness? ( If yes,
                                                                 please state exact details )</p>
                                                             <textarea class="form-control"
-                                                                id="applicant_serious_health_cond" name="applicant_serious_health_cond" rows="3"
+                                                                id="applicant_serious_health_cond"
+                                                                name="applicant_serious_health_cond" rows="3"
                                                                 placeholder="State your health condition (if any) and details here"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="form-group col-md-12" id="is_pregnant">
                                                             <p class="float-left mr-2">Are you pregnant now?</p>
-                                                            <select class="form-control" id="applicant_pregnant" name="applicant_pregnant"
-                                                                required>
+                                                            <select class="form-control" id="applicant_pregnant"
+                                                                name="applicant_pregnant" required>
                                                                 <option>Yes</option>
                                                                 <option selected>No</option>
                                                             </select>
@@ -184,27 +192,32 @@
                                                             <label class="float-left mt-2"
                                                                 for="applicant_referee_1_name">Name</label>
                                                             <input type="text" class="form-control"
-                                                                id="applicant_referee_1_name" name="applicant_referee_1_name" placeholder="Full Name"
+                                                                id="applicant_referee_1_name"
+                                                                name="applicant_referee_1_name" placeholder="Full Name"
                                                                 required>
                                                             <label class="float-left mt-2"
                                                                 for="applicant_referee_1_mobile">Tel
                                                                 No.
                                                             </label>
                                                             <input type="text" class="form-control" maxlength="12"
-                                                                id="applicant_referee_1_mobile" name="applicant_referee_1_mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                id="applicant_referee_1_mobile"
+                                                                name="applicant_referee_1_mobile"
+                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                                 placeholder="" required>
                                                             <label class="float-left mt-2"
                                                                 for="applicant_referee_1_occupation">Occupation
                                                             </label>
                                                             <input type="text" class="form-control"
-                                                                id="applicant_referee_1_occupation" name="applicant_referee_1_occupation"
+                                                                id="applicant_referee_1_occupation"
+                                                                name="applicant_referee_1_occupation"
                                                                 placeholder="Occupation" required>
                                                             <label class="float-left mt-2"
                                                                 for="applicant_referee_1_known">No. of
                                                                 Years Known
                                                             </label>
                                                             <input type="text" class="form-control"
-                                                                id="applicant_referee_1_known" name="applicant_referee_1_known"
+                                                                id="applicant_referee_1_known"
+                                                                name="applicant_referee_1_known"
                                                                 placeholder="X Years/Months" required>
                                                             <div class="invalid-feedback">
                                                                 Please complete all details
@@ -220,27 +233,32 @@
                                                             <label class="float-left mt-2"
                                                                 for="applicant_referee_2_name">Name</label>
                                                             <input type="text" class="form-control"
-                                                                id="applicant_referee_2_name" name="applicant_referee_2_name" placeholder="Full Name"
+                                                                id="applicant_referee_2_name"
+                                                                name="applicant_referee_2_name" placeholder="Full Name"
                                                                 required>
                                                             <label class="float-left mt-2"
                                                                 for="applicant_referee_2_mobile">Tel
                                                                 No.
                                                             </label>
                                                             <input type="text" class="form-control" maxlength="12"
-                                                                id="applicant_referee_2_mobile" name="applicant_referee_2_mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                id="applicant_referee_2_mobile"
+                                                                name="applicant_referee_2_mobile"
+                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                                 placeholder="" required>
                                                             <label class="float-left mt-2"
                                                                 for="applicant_referee_2_occupation">Occupation
                                                             </label>
                                                             <input type="text" class="form-control"
-                                                                id="applicant_referee_2_occupation" name="applicant_referee_2_occupation"
+                                                                id="applicant_referee_2_occupation"
+                                                                name="applicant_referee_2_occupation"
                                                                 placeholder="Occupation" required>
                                                             <label class="float-left mt-2"
                                                                 for="applicant_referee_2_known">No. of
                                                                 Years Known
                                                             </label>
                                                             <input type="text" class="form-control"
-                                                                id="applicant_referee_2_known" name="applicant_referee_2_known"
+                                                                id="applicant_referee_2_known"
+                                                                name="applicant_referee_2_known"
                                                                 placeholder="X Years/Months" required>
                                                             <div class="invalid-feedback">
                                                                 Please complete all the details
@@ -257,13 +275,13 @@
                                                             <label class="float-left"
                                                                 for="applicant_willing_travel">Willing
                                                                 to Travel</label>
-                                                            <select class="form-control" id="applicant_willing_travel" name="applicant_willing_travel"
-                                                                required>
+                                                            <select class="form-control" id="applicant_willing_travel"
+                                                                name="applicant_willing_travel" required>
                                                                 <option value="">Choose one</option>
-                                                                <option value = "No">No</option>
-                                                                <option value = "Light">Light</option>
-                                                                <option value = "Moderate">Moderate</option>
-                                                                <option value = "Heavy">Heavy</option>
+                                                                <option value="No">No</option>
+                                                                <option value="Light">Light</option>
+                                                                <option value="Moderate">Moderate</option>
+                                                                <option value="Heavy">Heavy</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -277,19 +295,20 @@
                                                                 for="applicant_notice_period">Notice
                                                                 Period</label>
                                                             <input type="number" class="form-control"
-                                                                id="applicant_notice_period" name="applicant_notice_period" placeholder="3" required>
-                                                                <div class="invalid-feedback">
-                                                                    Please fill in this field
-                                                                </div>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
-                                                                </div>
+                                                                id="applicant_notice_period"
+                                                                name="applicant_notice_period" placeholder="3" required>
+                                                            <div class="invalid-feedback">
+                                                                Please fill in this field
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
                                                         </div>
                                                         <div class="form-group col-md-3">
                                                             <label class="float-left"
                                                                 for="applicant_notice_year_week">Week/Month</label>
-                                                            <select class="form-control" id="applicant_notice_year_week" name="applicant_notice_year_week"
-                                                                required>
+                                                            <select class="form-control" id="applicant_notice_year_week"
+                                                                name="applicant_notice_year_week" required>
                                                                 <option value="">Choose one</option>
                                                                 <option>Week(s)</option>
                                                                 <option>Month(s)</option>
@@ -313,12 +332,12 @@
                                                                 <input type="number" class="form-control"
                                                                     id="applicant_cur_salary"
                                                                     name="applicant_cur_salary" placeholder="" required>
-                                                                    <div class="invalid-feedback">
-                                                                        Please state your current salary
-                                                                    </div>
-                                                                    <div class="valid-feedback">
-                                                                        Looks good!
-                                                                    </div>
+                                                                <div class="invalid-feedback">
+                                                                    Please state your current salary
+                                                                </div>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-6">
@@ -332,12 +351,12 @@
                                                                 <input type="number" class="form-control"
                                                                     id="applicant_exp_salary"
                                                                     name="applicant_exp_salary" placeholder="" required>
-                                                                    <div class="invalid-feedback">
-                                                                        Please state your expected salary
-                                                                    </div>
-                                                                    <div class="valid-feedback">
-                                                                        Looks good!
-                                                                    </div>
+                                                                <div class="invalid-feedback">
+                                                                    Please state your expected salary
+                                                                </div>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -347,12 +366,12 @@
                                                                 Resume</label>
                                                             <input type="file" name="resume_applicant"
                                                                 class="form-control" required>
-                                                                <div class="invalid-feedback">
-                                                                    Please upload your resume
-                                                                </div>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
-                                                                </div>
+                                                            <div class="invalid-feedback">
+                                                                Please upload your resume
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label class="float-left"
@@ -364,8 +383,7 @@
                                                                             class="fa fa-linkedin-square"></i></div>
                                                                 </div>
                                                                 <input type="text" class="form-control"
-                                                                    id="applicant_linkedin"
-                                                                    name="applicant_linkedin"
+                                                                    id="applicant_linkedin" name="applicant_linkedin"
                                                                     placeholder="https://www.linkedin.com/in/[username]">
                                                             </div>
                                                         </div>
@@ -387,14 +405,16 @@
                                                                 rows="3" placeholder="Write here..."></textarea> --}}
                                                         </div>
                                                         <div class="col-md-12">
-                                                            @trix(\App\ApplicationMeta::class, 'applicant_add_info', [ 'hideTools' => ['file-tools'] ])
+                                                            @trix(\App\ApplicationMeta::class, 'applicant_add_info', [
+                                                            'hideTools' => ['file-tools'] ])
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="p-3 mb-2 border rounded border-danger mt-4 bg-light">
                                                     <div class="row text-center">
                                                         <div class="form-group col-md-12">
-                                                            <p class="float-left mt-3 text-center">I HEREBY DECLARE THAT INFORMATION
+                                                            <p class="float-left mt-3 text-center">I HEREBY DECLARE THAT
+                                                                INFORMATION
                                                                 GIVEN ABOVE AND THOSE IN MY RESUME ARE COMPLETED AND
                                                                 TRUE. I
                                                                 UNDERSTAND THAT ANY MISREPRESENTATION OF FACTS GIVEN
@@ -402,8 +422,9 @@
                                                                 WILL BE SUFFICIENT CAUSE FOR DISMISSAL FROM THE
                                                                 COMPANY'S
                                                                 SERVICES IF I HAVE BEEN EMPLOYED.</p>
-                                                            <input class="form-check-input text-center" type="checkbox" value="Yes"
-                                                                id="applicant_conf_info" name="applicant_conf_info" required>
+                                                            <input class="form-check-input text-center" type="checkbox"
+                                                                value="Yes" id="applicant_conf_info"
+                                                                name="applicant_conf_info" required>
                                                             <label class="form-check-label" for="applicant_conf_info">
                                                                 Accept
                                                             </label>
@@ -416,9 +437,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               <button type="submit"
-                                                        class="btn btn-success float-center">Apply
-                                                        Now</button>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-success float-center">Submit Application</button>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>

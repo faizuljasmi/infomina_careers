@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Vacancy;
+use App\Application;
+use App\VacancyLog;
 use Illuminate\Http\Request;
 
 class VacancyController extends Controller
@@ -30,7 +32,11 @@ class VacancyController extends Controller
     public function view_admin(Vacancy $vacancy){
         $user = auth()->user();
         $vacancy = $vacancy;
-        return view('admin.vacancy.view')->with(compact('user','vacancy'));
+        $vac_apl = Application::where('vacancy_id', $vacancy->id)->orderBy('id', 'DESC')->paginate(10);
+        $vac_log_created = VacancyLog::where('vacancy_id', $vacancy->id)->where('action','created')->first();
+        $vac_log_edited = VacancyLog::where('vacancy_id', $vacancy->id)->where('action','edited')->latest()->first();;
+
+        return view('admin.vacancy.view')->with(compact('user','vacancy', 'vac_apl','vac_log_created','vac_log_edited'));
     }
 
     public function edit_admin(Vacancy $vacancy){
@@ -44,7 +50,6 @@ class VacancyController extends Controller
         $content = request('vacancy-trixFields');
 
         $user = auth()->user();
-        $inp = $request->all();
         $vacancy->job_title = $request->job_title;
         $vacancy->job_type = $request->job_type;
         $vacancy->job_desc = $content['job_desc'];
@@ -53,6 +58,12 @@ class VacancyController extends Controller
         $vacancy->update(['vacancy-trixFields' => request('vacancy-trixFields')]);
         $vacancy->update();
         //dd($vacancy->job_desc);
+
+        $vac_log = new VacancyLog;
+        $vac_log->user_id = $user->id;
+        $vac_log->vacancy_id = $vacancy->id;
+        $vac_log->action = "edited";
+        $vac_log->save();
 
         return view('admin.vacancy.view')->with(compact('vacancy','user'));
 
@@ -65,7 +76,8 @@ class VacancyController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+        return view('admin.vacancy.create')->with(compact('user'));
     }
 
     /**
@@ -76,7 +88,24 @@ class VacancyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user();
+        $vac = new Vacancy;
+        $vac->job_title = $request->job_title;
+        $vac->job_type = $request->job_type;
+        $vac->location = $request->location;
+
+        $richtext = request('vacancy-trixFields');
+        $vac->job_desc = $richtext['job_desc'];
+        $vac->job_req = $richtext['job_req'];
+        $vac->save();
+
+        $vac_log = new VacancyLog;
+        $vac_log->user_id = $user->id;
+        $vac_log->vacancy_id = $vac->id;
+        $vac_log->action = "created";
+        $vac_log->save();
+
+        return redirect()->route('admin-view-vacancies')->with('message', "Vacancy created successfully");
     }
 
     /**

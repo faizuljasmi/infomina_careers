@@ -9,7 +9,13 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header ">
-                    <h5 class="card-title">Application from {{$apl->metas[1]->meta_value}}</h5>
+                    <div class="row">
+                        <h5 class="card-title col-md-9">Application from {{$apl->metas[1]->meta_value}}</h5>
+                        <a href="{{route('admin-process-application',$apl)}}" class="col-md-1 text-right mr-4"><button
+                                type="button" class="btn btn-primary">Action</button></a>
+                        <button type="button" class="btn btn-primary col-md-1 text-right" data-toggle="modal"
+                            data-target="#exampleModalCenter">Log Info</button></a>
+                    </div>
                 </div>
                 <div class="card-body ">
                     <form>
@@ -23,17 +29,19 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <p class="float-left mr-2" for="status">Status: </p>
-                                    @if($apl->status == 1)
+                                    @if($apl->status == "Submitted")
                                     <h5><span class="badge badge-secondary float-left">Submitted</span>
                                     </h5>
-                                    @elseif($apl->status == 2)
+                                    @elseif($apl->status == "Processed")
                                     <h5><span class="badge badge-primary float-left">Processed</span>
                                     </h5>
-                                    @elseif($apl->status == 3)
+                                    @elseif($apl->status == "Called")
                                     <h5><span class="badge badge-success float-left">Called for
                                             Interview</span></h5>
-                                    @else
+                                    @elseif($apl->status == "Denied")
                                     <h5><span class="badge badge-danger float-left">Denied</span></h5>
+                                    @else
+                                    <h5><span class="badge badge-success float-left">Accepted</span></h5>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-3">
@@ -46,9 +54,7 @@
                                     </h5>
                                     @endif
                                 </div>
-                                <div class="form-group col-md-2">
-                                <a href="{{route('admin-process-application',$apl)}}"><button type="button" class="btn btn-primary">Action</button></a>
-                                </div>
+
                             </div>
                             <div class="p-3 mb-2 border rounded border-dark bg-light">
                                 <h6 class="mt-2">Applicant's Particulars</h6>
@@ -127,7 +133,7 @@
                                             please state exact details )</p>
                                         <textarea class="form-control" id="applicant_serious_health_cond"
                                             name="applicant_serious_health_cond" rows="3"
-                                            value="{{$apl->metas[8]->meta_value}}" readonly></textarea>
+                                            placeholder="{{$apl->metas[8]->meta_value}}" readonly></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -312,7 +318,7 @@
                                             any
                                             special talents, personal qualities or achievements not
                                             otherwise state in your resume.</p>
-                                        <div >
+                                        <div>
                                             {!! $apl->metas[24]->meta_value !!}
                                         </div>
                                     </div>
@@ -322,6 +328,65 @@
 
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Log Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <th>Action</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Last viewed by</td>
+                            <td>{{$apl_log_viewed->user->name}}</td>
+                            <td>{{$apl_log_viewed->created_at->diffForHumans()}}</td>
+                        </tr>
+                        <tr>
+                            <td>Processed by</td>
+                            <td>{{ ($apl_log_processed != null ? $apl_log_processed->user->name:"-") }}</td>
+                            <td>{{ ($apl_log_processed != null ? $apl_log_processed->created_at->diffForHumans():"-") }}</td>
+                        </tr>
+                        <tr>
+                            <td>Starred by</td>
+                            <td>{{ ($apl_log_starred != null ? $apl_log_starred->user->name:"-") }}</td>
+                            <td>{{ ($apl_log_starred != null ? $apl_log_starred->created_at->diffForHumans():"-") }}</td>
+                        </tr>
+                        <tr>
+                            <td>Called for interview by</td>
+                            <td>{{ ($apl_log_called != null ? $apl_log_called->user->name:"-") }}</td>
+                            <td>{{ ($apl_log_called != null ? $apl_log_called->created_at->diffForHumans():"-") }}</td>
+                        </tr>
+                        <tr>
+                            <td>Accepted by</td>
+                            <td>{{ ($apl_log_accepted != null ? $apl_log_accepted->user->name:"-") }}</td>
+                            <td>{{ ($apl_log_accepted != null ? $apl_log_accepted->created_at->diffForHumans():"-") }}</td>
+                        </tr>
+                        <tr>
+                            <td>Denied by</td>
+                            <td>{{ ($apl_log_denied != null ? $apl_log_denied->user->name:"-") }}</td>
+                            <td>{{ ($apl_log_denied != null ? $apl_log_denied->created_at->diffForHumans():"-") }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

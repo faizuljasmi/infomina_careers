@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use App\ApplicationMeta;
+use App\ApplicationLog;
 use Mail;
+use App\Mail\ApplicationSent;
 
 class ApplicationController extends Controller
 {
@@ -110,17 +112,17 @@ class ApplicationController extends Controller
                     //Pecahkan
                     $paths = explode('/', $uploaded_file);
                     $filename = $paths[1];
-                    //dd($uploaded_file);
+                    //dd($filename);
                     //Save filename into Database
                     $appMeta->meta_key = $key;
                     $appMeta->meta_value = $filename;
                 }
             }
-            if(strpos($key, 'applicationmeta-trixFields') === 0){
+            else if(strpos($key, 'applicationmeta-trixFields') === 0){
                 $addInfo = request('applicationmeta-trixFields');
                 $appMeta->meta_key = 'applicant_add_info';
                 $appMeta->meta_value = $addInfo['applicant_add_info'];
-
+                //$appMeta->update(['applicationmeta-trixFields' => request('applicationmeta-trixFields')]);
             } else {
                 $appMeta->meta_key = $key;
                 $appMeta->meta_value = $val;
@@ -128,7 +130,7 @@ class ApplicationController extends Controller
             $appMeta->save();
         }
 
-        //Mail::to($app->metas[5]->meta_value)->send(new ApplicationSent($app));
+        Mail::to($app->metas[5]->meta_value)->send(new ApplicationSent($app));
 
         $message = "Your application has been successfully submitted. Your application number is: ".$app->apl_no;
         return redirect()->to('/')->with('message', $message);
@@ -177,12 +179,26 @@ class ApplicationController extends Controller
     public function view_admin(Application $application){
         $apl = $application;
         $user = auth()->user();
-        return view('admin.application.view')->with(compact('apl','user'));
+
+        $log = new ApplicationLog;
+        $log->user_id = $user->id;
+        $log->application_id = $application->id;
+        $log->action = "viewed";
+        $log->save();
+
+        $apl_log_viewed = ApplicationLog::orderBy('created_at', 'desc')->where('application_id',$application->id)->where('action','viewed')->skip(1)->take(1)->first();
+        $apl_log_processed = ApplicationLog::where('application_id',$application->id)->where('action','processed')->latest()->first();
+        $apl_log_called = ApplicationLog::where('application_id',$application->id)->where('action','called')->latest()->first();
+        $apl_log_starred = ApplicationLog::where('application_id',$application->id)->where('action','starred')->latest()->first();
+        $apl_log_accepted = ApplicationLog::where('application_id',$application->id)->where('action','accepted')->latest()->first();
+        $apl_log_denied = ApplicationLog::where('application_id',$application->id)->where('action','denied')->latest()->first();
+        return view('admin.application.view')->with(compact('apl','user','log','apl_log_viewed','apl_log_processed','apl_log_called','apl_log_starred','apl_log_accepted','apl_log_denied'));
     }
 
     public function process_admin(Application $application){
         $apl = $application;
         $user = auth()->user();
+
         return view('admin.application.process')->with(compact('apl','user'));
     }
 
@@ -195,7 +211,32 @@ class ApplicationController extends Controller
 
         $apl = $application;
 
-        return view('admin.application.view')->with(compact('apl','user'));
+        $log = new ApplicationLog;
+        $log->user_id = $user->id;
+        $log->application_id = $application->id;
+        if($application->status == "Processed"){
+            $log->action = "processed";
+        }
+        else if ($application->status == "Called"){
+            $log->action = "called";
+        }
+        else if($application->status == "Accepted"){
+            $log->action = "accepted";
+        }
+        else if($application->status == "Denied"){
+            $log->action = "denied";
+        }
+        $log->save();
+
+        if($application->is_starred == "Yes"){
+            $log = new ApplicationLog;
+            $log->user_id = $user->id;
+            $log->application_id = $application->id;
+            $log->action = "starred";
+            $log->save();
+        }
+
+        return redirect()->route('admin-view-application',$application);
     }
 
     /**

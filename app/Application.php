@@ -15,6 +15,10 @@ class Application extends Model
         return $this->hasMany(ApplicationMeta::class);
     }
 
+    public function logs(){
+        return $this->hasMany(ApplicationLog::class);
+    }
+
     public function vacancy(){
         return $this->belongsTo(Vacancy::class);
     }

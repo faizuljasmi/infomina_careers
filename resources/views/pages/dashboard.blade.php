@@ -105,19 +105,21 @@
                                     <th>Applied For</th>
                                     <th>Status</th>
                                     <th>Applicant Name</th>
-                                    <th>Published</th>
+                                    <th>Submitted</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach($applications as $ap)
                                     <tr>
                                     <td>{{$ap->vacancy->job_title}}</td>
-                                    @if($ap->status == 1)
+                                    @if($ap->status == "Submitted")
                                     <td>Open</td>
-                                    @elseif($ap->status == 2)
-                                    <td>Reviewed</td>
-                                    @elseif($ap->status == 3)
+                                    @elseif($ap->status == "Processed")
+                                    <td>Processed</td>
+                                    @elseif($ap->status == "Called")
                                     <td>Called for Interview</td>
+                                    @elseif($ap->status == "Accepted")
+                                    <td>Accepted</td>
                                     @else
                                     <td>Denied</td>
                                     @endif
@@ -146,72 +148,26 @@
                             <table class="table-striped col-md-12">
                                 <thead class=" text-primary">
                                     <th>Job Title</th>
-                                    <th>Job Description</th>
                                     <th>Location</th>
                                     <th>Type</th>
                                     <th>Published</th>
+                                    <th>No. of Applications</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach($vacancies as $vc)
                                     <tr>
                                     <td>{{$vc->job_title}}</td>
-                                    <td>{{mb_strimwidth($vc->job_desc, 0, 50, "...")}}</td>
                                     <td>{{$vc->location}}</td>
                                     <td>{{$vc->job_type}}</td>
                                     <td>{{$vc->created_at->diffForHumans()}}</td>
+                                    <td>{{$vc->applications->count()}}</td>
                                     <td><a href="{{ route('admin-view-vacancy', $vc) }}"><button type="button" class="btn btn-primary">View</button></a></td>
                                 </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                             {{ $vacancies->links() }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card ">
-                    <div class="card-header ">
-                        <h5 class="card-title">Email Statistics</h5>
-                        <p class="card-category">Last Campaign Performance</p>
-                    </div>
-                    <div class="card-body ">
-                        <canvas id="chartEmail"></canvas>
-                    </div>
-                    <div class="card-footer ">
-                        <div class="legend">
-                            <i class="fa fa-circle text-primary"></i> Opened
-                            <i class="fa fa-circle text-warning"></i> Read
-                            <i class="fa fa-circle text-danger"></i> Deleted
-                            <i class="fa fa-circle text-gray"></i> Unopened
-                        </div>
-                        <hr>
-                        <div class="stats">
-                            <i class="fa fa-calendar"></i> Number of emails sent
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <h5 class="card-title">NASDAQ: AAPL</h5>
-                        <p class="card-category">Line Chart with Points</p>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="speedChart" width="400" height="100"></canvas>
-                    </div>
-                    <div class="card-footer">
-                        <div class="chart-legend">
-                            <i class="fa fa-circle text-info"></i> Tesla Model S
-                            <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                        </div>
-                        <hr />
-                        <div class="card-stats">
-                            <i class="fa fa-check"></i> Data information certified
                         </div>
                     </div>
                 </div>

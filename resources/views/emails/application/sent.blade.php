@@ -125,7 +125,7 @@ table[name="bmeMainBody"], body {background-color:#a6e9d7;}
 </table></div><div id="dv_3" class="blk_wrapper" style="">
 <table class="blk" name="blk_image" width="600" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
 <table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="bmeImage" style="padding: 20px; border-collapse: collapse;" align="center"><img
- src="{{ asset('paper') }}/img/infomina.png" class="mobile-img-large" width="560" style="max-width: 1120px; display: block; width: 560px;" alt="" border="0"></td></tr></tbody>
+ src="{{ asset('paper') }}/img/infomina.png" class="mobile-img-large" width="160" style=" display: block; width: 160px;" alt="" border="0"></td></tr></tbody>
 </table></td></tr></tbody>
 </table></div><div id="dv_18" class="blk_wrapper" style="">
 <table width="600" cellspacing="0" cellpadding="0" border="0" class="blk" name="blk_divider" style=""><tbody><tr><td class="tblCellMain" style="padding: 10px 20px;">

@@ -26,10 +26,11 @@
                                 <div class="form-group col-md-3">
                                     <p class="float-left mr-2" for="status">Status: </p>
                                     <select name="status" id="status">
-                                        <option value="1" {{ ($apl->status == "1" ? "selected":"") }}>Submitted</option>
-                                        <option value="2" {{ ($apl->status == "2" ? "selected":"") }}>Processed</option>
-                                        <option value="3" {{ ($apl->status == "3" ? "selected":"") }}>Call for Interview</option>
-                                        <option value="4" {{ ($apl->status == "4" ? "selected":"") }}>Denied</option>
+                                        <option value="Submitted" {{ ($apl->status == "Submitted" ? "selected":"") }}>Submitted</option>
+                                        <option value="Processed" {{ ($apl->status == "Processed" ? "selected":"") }}>Processed</option>
+                                        <option value="Called" {{ ($apl->status == "Called" ? "selected":"") }}>Call for Interview</option>
+                                        <option value="Accepted" {{ ($apl->status == "Accepted" ? "selected":"") }}>Accepted</option>
+                                        <option value="Denied" {{ ($apl->status == "Denied" ? "selected":"") }}>Denied</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">

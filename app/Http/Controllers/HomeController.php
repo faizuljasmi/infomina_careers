@@ -24,9 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {   $vacancies = Vacancy::paginate(10);
-        $applications = Application::paginate(10);
-        $processed_apl = Application::where('status', '!=', '1')->get();
-        $open_apl = Application::where('status','1')->get();
+        $applications = Application::orderBy('created_at','DESC')->paginate(10);
+        $processed_apl = Application::where('status', 'Processed')->get();
+        $open_apl = Application::where('status','Submitted')->get();
         $user = auth()->user();
         return view('pages.dashboard')->with(compact('vacancies','user','applications','processed_apl','open_apl'));
     }

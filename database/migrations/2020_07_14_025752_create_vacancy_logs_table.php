@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicationsTable extends Migration
+class CreateVacancyLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('vacancy_logs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('vacancy_id');
-            $table->string('apl_no');
-            $table->enum('status',['Submitted','Processed','Called','Accepted','Denied'])->default('Submitted');
-            $table->enum('is_starred',['Yes','No'])->default('No');
+            $table->enum('action', ['created', 'edited','closed']);
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('vacancy_id')->references('id')->on('vacancies');
         });
     }
@@ -32,6 +32,6 @@ class CreateApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('vacancy_logs');
     }
 }

@@ -33,17 +33,19 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="float-left mr-2" for="status">Status: </label>
-                                                    @if($apl->status == 1)
+                                                    @if($apl->status == "Submitted")
                                                     <h5><span class="badge badge-secondary float-left">Submitted</span>
                                                     </h5>
-                                                    @elseif($apl->status == 2)
+                                                    @elseif($apl->status == "Processed")
                                                     <h5><span class="badge badge-primary float-left">Processed</span>
                                                     </h5>
-                                                    @elseif($apl->status == 3)
+                                                    @elseif($apl->status == "Called")
                                                     <h5><span class="badge badge-success float-left">Called for
                                                             Interview</span></h5>
-                                                    @else
+                                                    @elseif($apl->status == "Denied")
                                                     <h5><span class="badge badge-danger float-left">Denied</span></h5>
+                                                    @else
+                                                    <h5><span class="badge badge-success float-left">Accepted</span></h5>
                                                     @endif
 
                                                 </div>
@@ -131,7 +133,7 @@
                                                         <textarea class="form-control"
                                                             id="applicant_serious_health_cond"
                                                             name="applicant_serious_health_cond" rows="3"
-                                                            value="{{$apl->metas[8]->meta_value}}" readonly></textarea>
+                                                            placeholder="{{$apl->metas[8]->meta_value}}" readonly></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row">

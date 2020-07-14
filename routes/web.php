@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/vacancies','VacancyController@index_admin')->name('admin-view-vacancies');
+    Route::get('/vacancies/create','VacancyController@create')->name('admin-create-vacancy');
+    Route::post('vacancies/create','VacancyController@store')->name('admin-store-vacancy');
     Route::get('/vacancies/view/{vacancy}','VacancyController@view_admin')->name('admin-view-vacancy');
     Route::get('/vacancies/edit/{vacancy}','VacancyController@edit_admin')->name('admin-edit-vacancy');
     Route::post('/vacancies/update/{vacancy}','VacancyController@update_admin')->name('admin-update-vacancy');

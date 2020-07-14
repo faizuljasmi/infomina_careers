@@ -2,10 +2,10 @@
     <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
             <div class="logo-image-small">
-                <img src="{{ asset('paper') }}/img/logo-small.png">
+                <img src="{{ asset('paper') }}/img/favicon.png">
             </div>
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="" class="simple-text logo-normal">
             {{ $user->name }}
         </a>
     </div>

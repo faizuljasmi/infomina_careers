@@ -13,4 +13,8 @@ class Vacancy extends Model
     public function applications(){
         return $this->hasMany(Application::class);
     }
+
+    public function logs(){
+        return $this->hasMany(VacancyLog::class);
+    }
 }

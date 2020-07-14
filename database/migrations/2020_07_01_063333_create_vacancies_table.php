@@ -20,6 +20,7 @@ class CreateVacanciesTable extends Migration
             $table->text('job_req');
             $table->string('location');
             $table->enum('job_type', ['full-time', 'contract','internship']);
+            $table->enum('is_active',['Yes','No'])->default('Yes');
             $table->timestamps();
         });
     }
