@@ -17,18 +17,20 @@ use App\Vacancy;
 Route::get('/', function () {
     $vacancies = Vacancy::paginate(10);
     return view('welcome')->with(compact('vacancies'));
-});
+})->name('homepage');
 
 Auth::routes([
 'register' => false, // Registration Routes...
   'verify' => false, // Email Verification Routes...
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/view/vacancy/{vacancy}', 'VacancyController@view')->name('view-vacancy');
 Route::get('/vacancy/apply/{vacancy}', 'ApplicationController@create')->name('create-application');
 Route::post('vacancy/apply/{vacancy}', 'ApplicationController@store')->name('submit-application');
 Route::get('/view/application','ApplicationController@show')->name('view-application');
+Route::get('/e-form','ApplicationController@eform_show')->name('e-form');
+Route::post('e-form','ApplicationController@eform_submit')->name('e-form-submit');
 
 
 Route::group(['middleware' => 'auth'], function () {

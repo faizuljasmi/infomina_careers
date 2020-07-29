@@ -20,7 +20,7 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header border-bottom border-primary">
-                                            <h4 class="card-title">Application for Employment</h4>
+                                            <h4 class="card-title">Applicant Details Form</h4>
                                         </div>
                                         @if(session()->has('error'))
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -33,15 +33,19 @@
                                         @endif
                                         <div class="card-body">
                                             <form class="needs-validation" novalidate method="POST"
-                                                action="{{route('submit-application', $vacancy)}}"
+                                                action="{{route('e-form-submit')}}"
                                                 enctype="multipart/form-data" id="submit-application">
                                                 @csrf
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label class="float-left" for="applied_for">Position Applied
                                                             for</label>
-                                                        <input type="text" class="form-control" id="applied_for"
-                                                            name="applied_for" value="{{$vacancy->job_title}}" readonly>
+                                                        <select class="form-control" id="applied_for" name="applied_for"
+                                                            required>
+                                                            @foreach($vacancies as $vc)
+                                                            <option value="{{$vc->id}}">{{$vc->job_title}}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="p-3 mb-2 border rounded border-dark bg-light">
@@ -438,7 +442,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <button type="submit" class="btn btn-success float-center">Submit Application</button>
+                                                    <button type="submit" class="btn btn-success float-center">Submit
+                                                        Application</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -457,7 +462,7 @@
     <div id="loading-image">
         <figure>
             <img src="{{asset('paper')}}\img\loading.gif" alt="Loading..." width="25%" height="25%"/>
-            <figcaption>Sending in your application...</figcaption>
+            <figcaption>Sending in your form...</figcaption>
           </figure>
     </div>
 </div>
@@ -521,6 +526,7 @@ function checkGender(){
     }
 
 }
+
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {

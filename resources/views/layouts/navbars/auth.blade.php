@@ -29,6 +29,12 @@
                     <p>{{ __('Applications') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'e-form' ? 'active' : '' }}">
+                <a href="{{route('admin-view-applications')}}">
+                        <i class="nc-icon nc-laptop"></i>
+                        <p>{{ __('e-Form') }}</p>
+                    </a>
+                </li>
         </ul>
     </div>
 </div>

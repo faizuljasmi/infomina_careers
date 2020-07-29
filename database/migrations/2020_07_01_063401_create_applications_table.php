@@ -19,6 +19,7 @@ class CreateApplicationsTable extends Migration
             $table->string('apl_no');
             $table->enum('status',['Submitted','Processed','Called','Accepted','Denied'])->default('Submitted');
             $table->enum('is_starred',['Yes','No'])->default('No');
+            $table->enum('is_eform',['Yes','No'])->default('No');
             $table->timestamps();
 
             $table->foreign('vacancy_id')->references('id')->on('vacancies');

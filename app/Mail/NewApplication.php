@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Application;
 
-class ApplicationSent extends Mailable
+class NewApplication extends Mailable
 {
     use Queueable, SerializesModels;
     public $application;
@@ -20,7 +20,7 @@ class ApplicationSent extends Mailable
      */
     public function __construct(Application $application)
     {
-        $this->application =  $application;
+        $this->application = $application;
     }
 
     /**
@@ -31,6 +31,6 @@ class ApplicationSent extends Mailable
     public function build()
     {
         $application = $this->application;
-        return $this->markdown('emails.application.sent')->subject('Job Application for '.$application->vacancy->job_title);
+        return $this->markdown('emails.application.received')->subject('New Job Application for '.$application->vacancy->job_title);
     }
 }

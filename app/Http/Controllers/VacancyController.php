@@ -150,6 +150,8 @@ class VacancyController extends Controller
      */
     public function destroy(Vacancy $vacancy)
     {
-        //
+        $vacancy->is_active = "No";
+        $vacancy->save();
+        return redirect()->route('admin-view-vacancies')->with('message', "Vacancy deleted successfully");
     }
 }

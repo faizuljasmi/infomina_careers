@@ -6,7 +6,7 @@
 <html>
 <head>
 
-<title>Application Sent</title>
+<title>Application Received</title>
 <link rel="shortcut icon" href="favicon.ico">
 
 <style type="text/css">
@@ -135,20 +135,15 @@ table[name="bmeMainBody"], body {background-color:#a6e9d7;}
 <table width="600" cellspacing="0" cellpadding="0" border="0" class="blk" name="blk_text"><tbody><tr><td>
 <table cellpadding="0" cellspacing="0" border="0" width="100%" class="bmeContainerRow"><tbody><tr><td class="tdPart" valign="top" align="center">
 <table cellspacing="0" cellpadding="0" border="0" width="600" name="tblText" style="float:left; background-color:transparent;" align="left" class="tblText"><tbody><tr><td valign="top" align="left" name="tblCell" style="padding: 5px 20px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; color: rgb(56, 56, 56); text-align: left;" class="tblCell"><div style="line-height: 125%; text-align: center;"><span style="font-size: 48px; font-family: Impact, Chicago; color: #ffffff; line-height: 125%;">
-<em><strong>We got your application!</strong></em></span></div></td></tr></tbody>
+<em><strong>New Application Received!</strong></em></span></div></td></tr></tbody>
 </table></td></tr></tbody>
 </table></td></tr></tbody>
 </table></div><div id="dv_15" class="blk_wrapper" style="">
 <table width="600" cellspacing="0" cellpadding="0" border="0" class="blk" name="blk_text"><tbody><tr><td>
 <table cellpadding="0" cellspacing="0" border="0" width="100%" class="bmeContainerRow"><tbody><tr><td class="tdPart" valign="top" align="center">
-<table cellspacing="0" cellpadding="0" border="0" width="600" name="tblText" style="float:left; background-color:transparent;" align="left" class="tblText"><tbody><tr><td valign="top" align="left" name="tblCell" style="padding: 5px 20px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; color: rgb(56, 56, 56); text-align: left;" class="tblCell"><div style="line-height: 150%; text-align: center;"><span style="font-size: 20px; font-family: Tahoma, Arial, Helvetica, sans-serif; color: #ffffff; line-height: 150%;">Our team will review your application & contact you further when necessary. You can also track your application status on our Careers site.</span></div></td></tr></tbody>
+<table cellspacing="0" cellpadding="0" border="0" width="600" name="tblText" style="float:left; background-color:transparent;" align="left" class="tblText"><tbody><tr><td valign="top" align="left" name="tblCell" style="padding: 5px 20px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; color: rgb(56, 56, 56); text-align: left;" class="tblCell"><div style="line-height: 150%; text-align: center;"><span style="font-size: 20px; font-family: Tahoma, Arial, Helvetica, sans-serif; color: #ffffff; line-height: 150%;">There's a new application waiting to be reviewed. Review it on the Careers site or click button below</span></div></td></tr></tbody>
 </table></td></tr></tbody>
 
-<table width="600" cellspacing="0" cellpadding="0" border="0" class="blk" name="blk_text"><tbody><tr><td>
-    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="bmeContainerRow"><tbody><tr><td class="tdPart" valign="top" align="center">
-    <table cellspacing="0" cellpadding="0" border="0" width="600" name="tblText" style="float:left; background-color:transparent;" align="left" class="tblText"><tbody><tr><td valign="top" align="left" name="tblCell" style="padding: 5px 20px; font-family: Arial, Helvetica, sans-serif; font-size: 7px; font-weight: 200; color: rgb(56, 56, 56); text-align: left;" class="tblCell"><div style="line-height: 150%; text-align: center;"><span style="font-size: 18px; font-family: Tahoma, Arial, Helvetica, sans-serif; color: #ffffff; line-height: 150%;">Application #: {{$application->apl_no}}</span></div></td></tr></tbody>
-    </table></td></tr></tbody>
-</table></td></tr></tbody>
 </table></div><div id="dv_17" class="blk_wrapper" style="">
 <table width="600" cellspacing="0" cellpadding="0" border="0" class="blk" name="blk_image"><tbody><tr><td>
 <table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td align="center" class="bmeImage" style="border-collapse: collapse; padding: 20px;"><img
@@ -167,7 +162,7 @@ table[name="bmeMainBody"], body {background-color:#a6e9d7;}
 <table width="600" cellspacing="0" cellpadding="0" border="0" class="blk" name="blk_button" style=""><tbody><tr><td width="20"></td><td align="center">
 <table class="tblContainer" cellspacing="0" cellpadding="0" border="0" width="100%"><tbody><tr><td height="20"></td></tr><tr><td align="center">
 <table cellspacing="0" cellpadding="0" border="0" class="bmeButton" align="center" style="border-collapse: separate;"><tbody><tr><td style="border-radius: 0px; border: 0px none transparent; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 14px; padding: 20px 40px; font-weight: bold; background-color: rgb(243, 156, 18);" class="bmeButtonText"><span style="font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 16px; color: rgb(255, 255, 255);">
-<a style="color:#FFFFFF;text-decoration:none;" href="{{url('/')}}">Check Application</a></span></td></tr></tbody>
+<a style="color:#FFFFFF;text-decoration:none;" href="{{url('/application/view/'.$application->id)}}">Check Application</a></span></td></tr></tbody>
 </table></td></tr><tr><td height="20"></td></tr></tbody>
 
 
