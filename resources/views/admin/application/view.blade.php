@@ -40,7 +40,7 @@
                                             Interview</span></h5>
                                     @elseif($apl->status == "Denied")
                                     <h5><span class="badge badge-danger float-left">Denied</span></h5>
-                                    @else
+                                    @elseif($apl->status == "Accepted")
                                     <h5><span class="badge badge-success float-left">Accepted</span></h5>
                                     @endif
                                 </div>

@@ -23,11 +23,12 @@ class HomeController extends Controller
      * @return \Illuminate\View\View
      */
     public function index()
-    {   $vacancies = Vacancy::paginate(10);
-        $applications = Application::orderBy('created_at','DESC')->paginate(10);
+    {   $vacancies = Vacancy::paginate(5);
+        $applications = Application::orderBy('created_at','DESC')->where('is_eform','No')->paginate(5);
+        $eforms = Application::orderBy('created_at','DESC')->where('is_eform','Yes')->paginate(5);
         $processed_apl = Application::where('status', 'Processed')->get();
         $open_apl = Application::where('status','Submitted')->get();
         $user = auth()->user();
-        return view('pages.dashboard')->with(compact('vacancies','user','applications','processed_apl','open_apl'));
+        return view('pages.dashboard')->with(compact('vacancies','user','applications','processed_apl','open_apl','eforms'));
     }
 }

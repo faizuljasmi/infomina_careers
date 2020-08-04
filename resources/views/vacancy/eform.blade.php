@@ -1,6 +1,7 @@
 @extends('layouts.app', [
 'class' => 'login-page',
-'elementActive' => ''
+'elementActive' => '',
+'isPublic' => 'Yes'
 ])
 
 @section('head')
@@ -36,15 +37,14 @@
                                                 action="{{route('e-form-submit')}}"
                                                 enctype="multipart/form-data" id="submit-application">
                                                 @csrf
+                                        <input type="text" name="apl_no" hidden value="{{$app->apl_no}}">
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label class="float-left" for="applied_for">Position Applied
                                                             for</label>
                                                         <select class="form-control" id="applied_for" name="applied_for"
-                                                            required>
-                                                            @foreach($vacancies as $vc)
-                                                            <option value="{{$vc->id}}">{{$vc->job_title}}</option>
-                                                            @endforeach
+                                                            readonly>
+                                                            <option value="{{$app->vacancy->job_title}}" selected>{{$app->vacancy->job_title}}</option>
                                                         </select>
                                                     </div>
                                                 </div>

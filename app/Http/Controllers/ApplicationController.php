@@ -13,6 +13,7 @@ use App\ApplicationLog;
 use Mail;
 use App\Mail\ApplicationSent;
 use App\Mail\NewApplication;
+use App\Mail\EformGenerated;
 
 class ApplicationController extends Controller
 {
@@ -24,7 +25,7 @@ class ApplicationController extends Controller
     public function index_admin()
     {
         $user = auth()->user();
-        $applications = Application::paginate(10);
+        $applications = Application::orderBy('created_at','DESC')->where('is_eform','No')->paginate(10);
         return view('admin.application.index')->with(compact('user','applications'));
     }
 
@@ -158,36 +159,28 @@ class ApplicationController extends Controller
         return view('application.view')->with(compact('apl'));
     }
 
-    public function eform_show(){
-        $vacancies = Vacancy::all();
-        return view('vacancy.eform')->with(compact('vacancies'));
+    public function eform_index(){
+        $user = auth()->user();
+        $eforms = Application::orderBy('created_at','DESC')->where('is_eform','Yes')->paginate(10);
+        return view('admin.eform.index')->with(compact('user','eforms'));
     }
 
-    public function eform_submit(Request $request){
-        $request->flash();
-        $validator = Validator::make(
-            $request->all(),
-            ['resume_applicant' => 'mimes:pdf,docx,doc|required|max:20000',]
-        );
+    public function eform_show($apl_no){
+        $app = Application::where('apl_no', $apl_no)->first();
+        //dd($app);
+        $vacancies = Vacancy::all();
+        return view('vacancy.eform')->with(compact('vacancies','app'));
+    }
 
-         // If validation fails, seek for specific error
-         if ($validator->fails()) {
-            $error = 'Error: <br>';
-            //If RESUME not uploaded
-            if($request->file('resume_applicant') === null){
-                $error =  $error.'Please upload your resume.<br>';
-            }
+    public function eform_create(){
+        $vacancies = Vacancy::all();
+        $user = auth()->user();
+        return view('admin.eform.create')->with(compact('vacancies','user'));
+    }
 
-            //If GAMBAR PEMOHON uploaded in wrong format
-            if($request->hasFile('resume_applicant') == true){
-                if(strpos($request->file('resume_applicant')->getMimeType(), 'pdf') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 ){
-                    $error = $error.'Your uploaded file is not in the correct format.';
-                }
-            }
-            return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error);
-        }
+    public function eform_generate(Request $request){
 
-        $inputs = $request->all();
+        $eforms = Application::orderBy('created_at','DESC')->where('is_eform','Yes')->paginate(10);
         $app = new Application;
         $app->vacancy_id = $request->applied_for;
 
@@ -215,12 +208,50 @@ class ApplicationController extends Controller
         $vac_id = $request->applied_for;
         //Combine all
         $app->apl_no = $vac_id.$dt.$timestmp.$app_id;
+        $app->is_eform = "Yes";
+        $app->status = "Generated";
+        $app->save();
+
+        Mail::to($request->applicant_email)->send(new EformGenerated($app));
+        $message = "Form has been successfully generated. An email has been sent to the applicant. Alternatively, share this link to the applicant to access the form: ".url('/e-form/view').'/'.$app->apl_no;
+        return redirect()->route('e-form-index')->with('message',$message);
+    }
+
+    public function eform_submit(Request $request){
+        //dd($request->all());
+        $request->flash();
+        $validator = Validator::make(
+            $request->all(),
+            ['resume_applicant' => 'mimes:pdf,docx,doc|required|max:20000',]
+        );
+
+         // If validation fails, seek for specific error
+         if ($validator->fails()) {
+            $error = 'Error: <br>';
+            //If RESUME not uploaded
+            if($request->file('resume_applicant') === null){
+                $error =  $error.'Please upload your resume.<br>';
+            }
+
+            //If GAMBAR PEMOHON uploaded in wrong format
+            if($request->hasFile('resume_applicant') == true){
+                if(strpos($request->file('resume_applicant')->getMimeType(), 'pdf') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 ){
+                    $error = $error.'Your uploaded file is not in the correct format.';
+                }
+            }
+            return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error);
+        }
+
+        $inputs = $request->all();
+        $apl_no = $request->get('apl_no');
+        $app =  Application::where('apl_no', $apl_no)->first();
+
         $app->status = "Called";
         $app->is_eform = "Yes";
         $app->save();
 
         foreach ($inputs as $key => $val) {
-            if (strpos($key, '_token') === 0 || strpos($key, 'attachment') === 0 || strpos($key, 'applied_for') === 0) {
+            if (strpos($key, '_token') === 0 || strpos($key, 'attachment') === 0 || strpos($key, 'apl_no') === 0) {
                 continue;
             }
             $appMeta = new ApplicationMeta;

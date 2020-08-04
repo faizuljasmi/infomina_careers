@@ -6,7 +6,7 @@
             </div>
         </a>
         <a href="" class="simple-text logo-normal">
-            {{ $user->name }}
+            {{ $user != null ? $user->name :"" }}
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="{{ $elementActive == 'e-form' ? 'active' : '' }}">
-                <a href="{{route('admin-view-applications')}}">
+                <a href="{{route('e-form-index')}}">
                         <i class="nc-icon nc-laptop"></i>
                         <p>{{ __('e-Form') }}</p>
                     </a>

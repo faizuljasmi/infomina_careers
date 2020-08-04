@@ -50,7 +50,7 @@
                                                     <path fill-rule="evenodd"
                                                         d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                                 </svg></button></a>
-                                        <a href="{{ route('admin-view-vacancy', $vc) }}"><button type="button"
+                                        <a href="{{ route('admin-delete-vacancy', $vc) }}" onclick="return confirm('Are you sure you want to take down this vacancy?')"><button type="button"
                                                 class="btn btn-danger btm-sm"><svg width="1em" height="1em"
                                                     viewBox="0 0 16 16" class="bi bi-file-earmark-minus"
                                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">

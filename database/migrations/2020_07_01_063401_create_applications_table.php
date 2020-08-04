@@ -17,7 +17,7 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('vacancy_id');
             $table->string('apl_no');
-            $table->enum('status',['Submitted','Processed','Called','Accepted','Denied'])->default('Submitted');
+            $table->enum('status',['Submitted','Generated','Processed','Called','Accepted','Denied'])->default('Submitted');
             $table->enum('is_starred',['Yes','No'])->default('No');
             $table->enum('is_eform',['Yes','No'])->default('No');
             $table->timestamps();

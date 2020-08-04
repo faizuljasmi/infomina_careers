@@ -25,7 +25,7 @@ class VacancyController extends Controller
 
     public function index_admin(){
         $user = auth()->user();
-        $vacancies = Vacancy::paginate(10);
+        $vacancies = Vacancy::where('is_active', 'Yes')->paginate(10);
         return view('admin.vacancy.index')->with(compact('user','vacancies'));
     }
 

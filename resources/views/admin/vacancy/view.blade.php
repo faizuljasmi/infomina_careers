@@ -77,12 +77,11 @@
                     No Applications Found
                     @else
                     <div class="table">
-                        <table class="table table-bordered col-md-12">
+                        <table class="table table-bordered table-sm col-md-12">
                             <thead class="text-primary">
                                 <th>No.</th>
                                 <th>Name</th>
                                 <th>Status</th>
-                                <th>Fav</th>
                                 <th>Posted</th>
                                 <th>Action</th>
                             </thead>
@@ -91,12 +90,11 @@
                                 @foreach($vac_apl as $va)
                                 <tr>
                                     <td>{{++$count}}</td>
-                                    <td>{{$va->metas[1]->meta_value}}</td>
+                                    <td>{{$va->metas->count() != 0  ? $va->metas[1]->meta_value : "Form incomplete"}}</td>
                                     <td>{{$va->status}}</td>
-                                    <td>{{$va->is_starred}}</td>
                                     <td>{{$va->created_at->diffForHumans()}}</td>
                                     <td><a href="{{ route('admin-view-application', $va) }}"><button type="button"
-                                                class="btn btn-sm btn-primary">View</button></a></td>
+                                                class="btn btn-sm btn-primary"><i class="nc-icon nc-zoom-split"></i></button></a></td>
                                 </tr>
                                 @endforeach
                                 {{$vac_apl->links()}}
