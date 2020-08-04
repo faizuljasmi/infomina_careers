@@ -157,7 +157,7 @@
                                     <th>Submitted For</th>
                                     <th>Status</th>
                                     <th>Applicant Name</th>
-                                    <th>Submitted</th>
+                                    <th>Generated/Submitted</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
