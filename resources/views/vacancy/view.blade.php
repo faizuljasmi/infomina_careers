@@ -1,6 +1,7 @@
 @extends('layouts.app', [
     'class' => 'login-page',
-    'elementActive' => ''
+    'elementActive' => '',
+    'isPublic' => 'Yes'
 ])
 
 @section('content')
