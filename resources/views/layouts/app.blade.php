@@ -87,10 +87,10 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- End Google Tag Manager (noscript) -->
 
     @auth()
-        @if($isPublic == 'No')
-            @include('layouts.page_templates.auth')
-        @else
+        @if(isset($isPublic) && $isPublic == "Yes")
             @include('layouts.page_templates.guest')
+        @else
+            @include('layouts.page_templates.auth')
         @endif
     @endauth
 
