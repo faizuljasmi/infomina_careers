@@ -118,7 +118,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     @stack('scripts')
 
-    @include('layouts.navbars.fixed-plugin-js')
+    {{-- @include('layouts.navbars.fixed-plugin-js') --}}
 </body>
 
 </html>
