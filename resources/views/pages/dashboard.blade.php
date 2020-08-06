@@ -203,11 +203,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card ">
-                    <div class="card-header ">
+                    <div class="card-header">
                         <h5 class="card-title">Job Vacancies</h5>
                         <p>Showing all vacancies posted on the careers site</p>
                     </div>
-                    <div class="card-body ">
+                    <div class="card-body">
                         <div class="table">
                             <table class="table-striped col-md-12">
                                 <thead class=" text-primary">

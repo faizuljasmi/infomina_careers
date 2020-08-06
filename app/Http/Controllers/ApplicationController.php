@@ -138,8 +138,9 @@ class ApplicationController extends Controller
         }
         Mail::to($app->metas[5]->meta_value)->send(new ApplicationSent($app));
 
-        $message = "Your application has been successfully submitted. Your application number is: ".$app->apl_no;
-        return redirect()->to('/')->with('message', $message);
+        $message = "Your application has been successfully submitted. Your application number is:";
+        $apl_num = $app->apl_no;
+        return redirect()->to('/')->with(['message' => $message, 'apl_num' => $apl_num]);
     }
 
     /**

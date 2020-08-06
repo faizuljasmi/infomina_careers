@@ -20,6 +20,11 @@
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    @if(\Route::current()->getName() == 'homepage')
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#applicationModalCenter">Check Application</button>
+                    @endif
+                </li>
+                <li class="nav-item">
                     <a href="{{ url("/") }}" class="nav-link">
                         <i class="nc-icon nc-layout-11"></i> {{ __('Home') }}
                     </a>

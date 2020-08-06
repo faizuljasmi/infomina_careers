@@ -12,47 +12,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-12 pt-5">
                         {{-- <h1 class="@if(Auth::guest()) text-white @endif">{{ __('Infomina Careers') }}</h1> --}}
-                        <div class="d-flex justify-content-center">
-                            <div class="col-md-10">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">Check Application Status</h4>
-                                    </div>
-                                    @if(session()->has('message'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <i class="icon fa fa-check"></i>
-                                        {{ session()->get('message') }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    @endif
-                                    @if(session()->has('error'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <i class="icon fa fa-exclamation-triangle"></i>
-                                        {!! session('error') !!}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    @endif
-                                    <div class="card-body">
-                                        <form method="GET" action="{{route('view-application')}}" id="view-application">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="apl_no">Application Number</label>
-                                                    <input type="text"
-                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                        class="form-control" id="apl_no" name="apl_no"
-                                                        placeholder="Application Number" required>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-success float-center">Check</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="output" id="output">
                             <h1 class="cursor"></h1>
                             <p></p>
@@ -65,6 +25,15 @@
                                         <div class="card-header">
                                             <h4 class="card-title">Vacancies</h4>
                                         </div>
+                                        @if(session()->has('error'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <i class="icon fa fa-exclamation-triangle"></i>
+                                            {!! session('error') !!}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        @endif
                                         <div class="card-body">
                                             <div class="table">
                                                 <table class="table-striped col-md-12">
@@ -98,6 +67,58 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Application Succesful Modal -->
+<div class="modal fade" id="successModalCenter" tabindex="-1" role="dialog" aria-labelledby="successModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLongTitle">Application Submitted Succesfully</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                {!! strip_tags(session()->get('message')) !!}
+                <h5> {!! strip_tags(session()->get('apl_num')) !!}</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Check ApplicationModal -->
+<div class="modal fade" id="applicationModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="applicationModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="applicationModalLongTitle">Check Application Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <form method="GET" action="{{route('view-application')}}" id="view-application">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="apl_no">Application Number</label>
+                            <input type="text"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                class="form-control" id="apl_no" name="apl_no" placeholder="Application Number"
+                                required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success float-center">Check</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </form>
             </div>
         </div>
     </div>
@@ -181,6 +202,9 @@
 <script>
     $(document).ready(function() {
             demo.checkFullPageBackgroundImage();
+            if(hasMessage == true){
+                $("#successModalCenter").modal({ show : true });
+            }
         });
 
         // values to keep track of the number of letters typed, which quote to use. etc. Don't change these values.
