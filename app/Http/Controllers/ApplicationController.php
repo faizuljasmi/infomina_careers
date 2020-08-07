@@ -156,6 +156,9 @@ class ApplicationController extends Controller
         if($apl == null){
             return redirect()->to('/')->with('error', "Application cannot be found. Make sure your application number is correct.");
         }
+        else if($apl->status == "Generated"){
+            return redirect()->to('/')->with('error', "Application has not been completed. Make sure to fill up the e-Form for it to be processed.");
+        }
 
         return view('application.view')->with(compact('apl'));
     }
