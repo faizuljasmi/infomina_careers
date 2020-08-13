@@ -61,9 +61,9 @@ class ApplicationController extends Controller
                 $error =  $error.'Please upload your resume.<br>';
             }
 
-            //If GAMBAR PEMOHON uploaded in wrong format
+            //If resume uploaded in wrong format
             if($request->hasFile('resume_applicant') == true){
-                if(strpos($request->file('resume_applicant')->getMimeType(), 'pdf') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 ){
+                if(strpos($request->file('resume_applicant')->getMimeType(), 'pdf') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'doc') !==  0 ){
                     $error = $error.'Your uploaded file is not in the correct format.';
                 }
             }
@@ -107,7 +107,7 @@ class ApplicationController extends Controller
             $appMeta = new ApplicationMeta;
             $appMeta->application_id = $app->id;
             if (strpos($key, 'resume_') === 0) {
-                //Upload Gambar Pemohon
+                //Upload resume
                 if ($request->hasFile('resume_applicant')) {
                     $resume_app = $request->file('resume_applicant');
                     $uploaded_file = $resume_app->store('public');
