@@ -31,6 +31,6 @@ class NewApplication extends Mailable
     public function build()
     {
         $application = $this->application;
-        return $this->markdown('emails.application.received')->subject('New Job Application for '.$application->vacancy->job_title);
+        return $this->markdown('emails.application.received')->subject('(Do Not Reply) New Job Application for '.$application->vacancy->job_title);
     }
 }

@@ -31,6 +31,6 @@ class EformGenerated extends Mailable
     public function build()
     {
         $application = $this->application;
-        return $this->markdown('emails.eform.generated')->subject('e-Form - Job Application for '.$application->vacancy->job_title);
+        return $this->markdown('emails.eform.generated')->subject('(Do Not Reply) e-Form - Job Application for '.$application->vacancy->job_title);
     }
 }

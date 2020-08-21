@@ -31,6 +31,6 @@ class ApplicationSent extends Mailable
     public function build()
     {
         $application = $this->application;
-        return $this->markdown('emails.application.sent')->subject('Job Application for '.$application->vacancy->job_title);
+        return $this->markdown('emails.application.sent')->subject('(Do Not Reply) Job Application for '.$application->vacancy->job_title);
     }
 }
