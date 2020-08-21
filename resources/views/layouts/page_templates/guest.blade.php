@@ -59,9 +59,9 @@
             <li></li>
         </ul>
         @yield('content')
-        @include('layouts.footer')
     </div>
 </div>
+@include('layouts.footer')
 <style>
     @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
@@ -93,7 +93,7 @@
         background: #4e54c8;
         background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
         width: 100%;
-        height: 100%;
+        height: 720px;
     }
 
     .circles {
