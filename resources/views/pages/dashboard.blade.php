@@ -209,6 +209,9 @@
                     </div>
                     <div class="card-body">
                         <div class="table">
+                            @if($vacancies->count() == 0)
+                            No records found
+                            @else
                             <table class="table-striped col-md-12">
                                 <thead class=" text-primary">
                                     <th>Job Title</th>
@@ -232,6 +235,7 @@
                                 </tbody>
                             </table>
                             {{ $vacancies->links() }}
+                            @endif
                         </div>
                     </div>
                 </div>
