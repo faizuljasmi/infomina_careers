@@ -38,13 +38,13 @@ The above copyright notice and this permission notice shall be included in all c
 
 
     <!-- Twitter Card data -->
-    <meta name="twitter:card" content="product">
+    {{-- <meta name="twitter:card" content="product">
     <meta name="twitter:site" content="@creativetim">
     <meta name="twitter:title" content="Infomina Careers">
 
     <meta name="twitter:description" content="Start your development with a Bootstrap 4 Admin Dashboard built for Laravel Framework 5.5 and Up.">
     <meta name="twitter:creator" content="@creativetim">
-    <meta name="twitter:image" content="https://s3.amazonaws.com/creativetim_bucket/products/209/opt_pd_laravel_thumbnail.jpg">
+    <meta name="twitter:image" content="https://s3.amazonaws.com/creativetim_bucket/products/209/opt_pd_laravel_thumbnail.jpg"> --}}
 
 
     <!-- Open Graph data -->

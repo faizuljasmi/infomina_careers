@@ -43,20 +43,20 @@
                                             <div class="table">
                                                 <table class="table-striped col-md-12">
                                                     <thead class=" text-primary">
-                                                        <th class="text-center">Job Title</th>
-                                                        <th class="text-center">Location</th>
-                                                        <th class="text-center">Type</th>
-                                                        <th class="text-center">Published</th>
-                                                        <th class="text-center">Action</th>
+                                                        <th>Job Title</th>
+                                                        <th>Location</th>
+                                                        <th>Type</th>
+                                                        <th>Published</th>
+                                                        <th>Action</th>
                                                     </thead>
                                                     <tbody>
                                                         @foreach($vacancies as $vc)
                                                         <tr>
-                                                            <td class="text-center">{{$vc->job_title}}</td>
-                                                            <td class="text-center">{{$vc->location}}</td>
-                                                            <td class="text-center">{{$vc->job_type}}</td>
-                                                            <td class="text-center">{{$vc->created_at->diffForHumans()}}</td>
-                                                            <td class="text-center"><a href="{{ route('view-vacancy', $vc) }}"><button
+                                                            <td>{{$vc->job_title}}</td>
+                                                            <td>{{$vc->location}}</td>
+                                                            <td>{{$vc->job_type}}</td>
+                                                            <td>{{$vc->created_at->diffForHumans()}}</td>
+                                                            <td><a href="{{ route('view-vacancy', $vc) }}"><button
                                                                         type="button"
                                                                         class="btn btn-primary">View</button></a></td>
                                                         </tr>
@@ -128,8 +128,6 @@
         </div>
     </div>
 </div>
-@endsection
-
 <style>
     form,
     label,
@@ -149,7 +147,7 @@
     }
 
     body {
-        background-color: #333;
+        background-color: #4e54c8;
     }
 
     .output {
@@ -203,6 +201,7 @@
         }
     }
 </style>
+@endsection
 
 @push('scripts')
 <script>
