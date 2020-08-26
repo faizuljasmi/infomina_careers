@@ -40,7 +40,7 @@
                                         </div>
                                         @endif
                                         <div class="card-body">
-                                            <div class="table">
+                                            <div class="table" style="overflow-x:auto;">
                                                 <table class="table-striped col-md-12">
                                                     <thead class=" text-primary">
                                                         <th>Job Title</th>
