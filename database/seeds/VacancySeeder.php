@@ -11,6 +11,6 @@ class VacancySeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Vacancy::class, 50)->create();
+        factory(App\Vacancy::class, 1)->create();
     }
 }
