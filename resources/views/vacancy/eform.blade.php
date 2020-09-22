@@ -326,41 +326,74 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="form-group col-md-6">
+                                                        <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_cur_salary">Current
                                                                 Salary</label>
-                                                            <div class="input-group mb-2 mr-sm-2">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-text">RM</div>
-                                                                </div>
-                                                                <input type="number" class="form-control"
-                                                                    id="applicant_cur_salary"
-                                                                    name="applicant_cur_salary" placeholder="" required>
-                                                                <div class="invalid-feedback">
-                                                                    Please state your current salary
-                                                                </div>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
-                                                                </div>
+                                                            <select class="form-control"  id="applicant_cur_salary_currency"
+                                                            name="applicant_cur_salary_currency" required>
+                                                                <option value="">Currency</option>
+                                                                <option >MYR</option>
+                                                                <option >USD</option>
+                                                                <option >SGD</option>
+                                                                <option >PHP</option>
+                                                                <option >IDR</option>
+                                                                <option >THB</option>
+                                                                <option >VND</option>
+                                                                <option >HKD</option>
+                                                                <option >TWD</option>
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                Please choose one
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
                                                             </div>
                                                         </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label class="float-left"
-                                                                for="applicant_exp_salary">Expected
+                                                        <div class="form-group col-md-4">
+                                                            <label class="float-left" for="applicant_cur_salary">:</label>
+                                                            <input type="number" class="form-control"
+                                                                id="applicant_cur_salary" name="applicant_cur_salary"
+                                                                placeholder="" required>
+                                                            <div class="invalid-feedback">
+                                                                Please state your current salary
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label class="float-left" for="applicant_exp_salary">Expected
                                                                 Salary</label>
-                                                            <div class="input-group mb-2 mr-sm-2">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-text">RM</div>
-                                                                </div>
-                                                                <input type="number" class="form-control"
-                                                                    id="applicant_exp_salary"
-                                                                    name="applicant_exp_salary" placeholder="" required>
-                                                                <div class="invalid-feedback">
-                                                                    Please state your expected salary
-                                                                </div>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
-                                                                </div>
+                                                            <select class="form-control" id="applicant_exp_salary_currency"
+                                                            name="applicant_exp_salary_currency" required>
+                                                                <option value="">Currency</option>
+                                                                <option >MYR</option>
+                                                                <option >USD</option>
+                                                                <option >SGD</option>
+                                                                <option >PHP</option>
+                                                                <option >IDR</option>
+                                                                <option >THB</option>
+                                                                <option >VND</option>
+                                                                <option >HKD</option>
+                                                                <option >TWD</option>
+                                                            </select>
+                                                            <div class="invalid-feedback">
+                                                                Please choose one
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label class="float-left" for="applicant_exp_salary">:</label>
+                                                            <input type="number" class="form-control"
+                                                                id="applicant_exp_salary" name="applicant_exp_salary"
+                                                                placeholder="" required>
+                                                            <div class="invalid-feedback">
+                                                                Please state your expected salary
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
                                                             </div>
                                                         </div>
                                                     </div>

@@ -278,6 +278,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
+                                                    @if($apl->created_at < Carbon\Carbon::parse('22-9-2020'))
                                                     <div class="form-group col-md-6">
                                                         <label class="float-left" for="applicant_cur_salary">Current
                                                             Salary</label>
@@ -302,13 +303,34 @@
                                                                 value="{{$apl->metas[22]->meta_value}}" readonly>
                                                         </div>
                                                     </div>
+                                                    @else
+                                                    <div class="form-group col-md-6">
+                                                        <label class="float-left" for="applicant_cur_salary">Current
+                                                            Salary</label>
+                                                        <div class="input-group mb-2 mr-sm-2">
+                                                            <input type="text" class="form-control" id="applicant_cur_salary"
+                                                                name="applicant_cur_salary" value="{{$apl->metas[21]->meta_value}} {{$apl->metas[22]->meta_value}}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label class="float-left" for="applicant_exp_salary">Expected
+                                                            Salary</label>
+                                                        <div class="input-group mb-2 mr-sm-2">
+                                                            <input type="text" class="form-control" id="applicant_exp_salary"
+                                                                name="applicant_exp_salary" value="{{$apl->metas[23]->meta_value}} {{$apl->metas[24]->meta_value}}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+                                                    @endif
                                                 </div>
                                                 <div class="row">
+                                                    @if($apl->created_at < Carbon\Carbon::parse('22-9-2020'))
                                                     <div class="col-md-6">
                                                         <label class="float-left" for="resume_applicant">Uploaded
                                                             Resume</label>
                                                         <div class="input-group">
-                                                            <a href="{{$apl->resume_url}}" target="_blank">View
+                                                            <a href="{{$apl->old_resume_url}}" target="_blank">View
                                                                 Attachment</a>
                                                         </div>
                                                     </div>
@@ -325,6 +347,29 @@
                                                                 value="{{$apl->metas[23]->meta_value}}" readonly>
                                                         </div>
                                                     </div>
+                                                    @else
+                                                    <div class="col-md-6">
+                                                        <label class="float-left" for="resume_applicant">Uploaded
+                                                            Resume</label>
+                                                        <div class="input-group">
+                                                            <a href="{{$apl->new_resume_url}}" target="_blank">View
+                                                                Attachment</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label class="float-left" for="applicant_linkedin">LinkedIn
+                                                            (Optional)</label>
+                                                        <div class="input-group mb-2 mr-sm-2">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text"><i class="fa fa-linkedin-square"></i>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="applicant_linkedin"
+                                                                name="applicant_linkedin" value="{{$apl->metas[25]->meta_value}}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="p-3 mb-2 border rounded border-dark mt-4 bg-light">
@@ -339,9 +384,15 @@
                                                             any
                                                             special talents, personal qualities or achievements not
                                                             otherwise state in your resume.</p>
+                                                            @if($apl->created_at < Carbon\Carbon::parse('22-9-2020'))
                                                             <div class="p-3 mb-2 bg-white  rounded">
                                                                 {!!$apl->metas[24]->meta_value!!}
                                                             </div>
+                                                            @else
+                                                            <div class="p-3 mb-2 bg-white  rounded">
+                                                                {!!$apl->metas[26]->meta_value!!}
+                                                            </div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                             </div>

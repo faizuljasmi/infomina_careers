@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/application/view/{application}', 'ApplicationController@view_admin')->name('admin-view-application');
     Route::get('/application/process/{application}', 'ApplicationController@process_admin')->name('admin-process-application');
     Route::post('application/process/{application}', 'ApplicationController@submit_process_admin')->name('admin-submit-process-application');
+    Route::get('/application/export/{application}', 'ApplicationController@export_admin')->name('admin-export-application');
 
     Route::get('/e-forms','ApplicationController@eform_index')->name('e-form-index');
     Route::get('/e-form/create','ApplicationController@eform_create')->name('e-form-create');

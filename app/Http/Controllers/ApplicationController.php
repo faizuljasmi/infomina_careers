@@ -15,6 +15,9 @@ use App\Mail\ApplicationSent;
 use App\Mail\NewApplication;
 use App\Mail\EformGenerated;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class ApplicationController extends Controller
 {
     /**
@@ -380,6 +383,41 @@ class ApplicationController extends Controller
         }
 
         return redirect()->route('admin-view-application',$application);
+    }
+
+    public function export_admin(Application $application){
+        $inputFileName = './excel/apl_form.xlsx';
+
+        /** Load $inputFileName to a Spreadsheet Object  **/
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
+
+        //Set data into form
+        //Job Title
+        $spreadsheet->getActiveSheet()->setCellValue('C4', $application->vacancy->job_title);
+        //Date
+        $spreadsheet->getActiveSheet()->setCellValue('H4', Carbon::parse($application->created_at)->isoFormat('D MMM YYYY'));
+        //Name
+        $spreadsheet->getActiveSheet()->setCellValue('A8', $application->metas[1]->meta_value);
+        //ID NO
+        $spreadsheet->getActiveSheet()->setCellValue('F8', $application->metas[2]->meta_value);
+        //Gender
+        $spreadsheet->getActiveSheet()->setCellValue('G8', $application->metas[3]->meta_value);
+        //Email
+        $spreadsheet->getActiveSheet()->setCellValue('A10', $application->metas[5]->meta_value);
+        //Mobile No
+        $spreadsheet->getActiveSheet()->setCellValue('C10', $application->metas[6]->meta_value);
+        //Office No
+        $spreadsheet->getActiveSheet()->setCellValue('F10', $application->metas[7]->meta_value);
+        //Marital Status
+        $spreadsheet->getActiveSheet()->setCellValue('G10', $application->metas[4]->meta_value);
+
+
+
+        $writer = new Xlsx($spreadsheet);
+        $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment; filename="Leave_Applications_All.xlsx"');
+        $writer->save("php://output");
     }
 
     /**
