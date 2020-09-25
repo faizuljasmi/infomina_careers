@@ -442,8 +442,10 @@
                                                                 rows="3" placeholder="Write here..."></textarea> --}}
                                                         </div>
                                                         <div class="col-md-12">
-                                                            @trix(\App\ApplicationMeta::class, 'applicant_add_info', [
-                                                            'hideTools' => ['file-tools'] ])
+                                                            <textarea class="form-control"
+                                                            id="applicant_add_info"
+                                                            name="applicant_add_info" rows="3"
+                                                            placeholder="Additional infos that are not stated in your resume/CV"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

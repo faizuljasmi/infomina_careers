@@ -123,12 +123,13 @@ class ApplicationController extends Controller
                     $appMeta->meta_value = $filename;
                 }
             }
-            else if(strpos($key, 'applicationmeta-trixFields') === 0){
-                $addInfo = request('applicationmeta-trixFields');
-                $appMeta->meta_key = 'applicant_add_info';
-                $appMeta->meta_value = $addInfo['applicant_add_info'];
-                //$appMeta->update(['applicationmeta-trixFields' => request('applicationmeta-trixFields')]);
-            } else {
+            // else if(strpos($key, 'applicationmeta-trixFields') === 0){
+            //     $addInfo = request('applicationmeta-trixFields');
+            //     $appMeta->meta_key = 'applicant_add_info';
+            //     $appMeta->meta_value = $addInfo['applicant_add_info'];
+            //     //$appMeta->update(['applicationmeta-trixFields' => request('applicationmeta-trixFields')]);
+            // }
+            else {
                 $appMeta->meta_key = $key;
                 $appMeta->meta_value = $val;
             }
@@ -277,12 +278,13 @@ class ApplicationController extends Controller
                     $appMeta->meta_value = $filename;
                 }
             }
-            else if(strpos($key, 'applicationmeta-trixFields') === 0){
-                $addInfo = request('applicationmeta-trixFields');
-                $appMeta->meta_key = 'applicant_add_info';
-                $appMeta->meta_value = $addInfo['applicant_add_info'];
-                //$appMeta->update(['applicationmeta-trixFields' => request('applicationmeta-trixFields')]);
-            } else {
+            // else if(strpos($key, 'applicationmeta-trixFields') === 0){
+            //     $addInfo = request('applicationmeta-trixFields');
+            //     $appMeta->meta_key = 'applicant_add_info';
+            //     $appMeta->meta_value = $addInfo['applicant_add_info'];
+            //     //$appMeta->update(['applicationmeta-trixFields' => request('applicationmeta-trixFields')]);
+            // }
+            else {
                 $appMeta->meta_key = $key;
                 $appMeta->meta_value = $val;
             }
@@ -407,10 +409,46 @@ class ApplicationController extends Controller
         //Mobile No
         $spreadsheet->getActiveSheet()->setCellValue('C10', $application->metas[6]->meta_value);
         //Office No
-        $spreadsheet->getActiveSheet()->setCellValue('F10', $application->metas[7]->meta_value);
+        $spreadsheet->getActiveSheet()->setCellValue('E10', $application->metas[7]->meta_value);
         //Marital Status
         $spreadsheet->getActiveSheet()->setCellValue('G10', $application->metas[4]->meta_value);
+        //Health Conditions
+        $spreadsheet->getActiveSheet()->setCellValue('A14', $application->metas[8]->meta_value);
+        //Is pregnant
+        $spreadsheet->getActiveSheet()->setCellValue('D17', $application->metas[9]->meta_value);
 
+        //Referee 1 Name
+        $spreadsheet->getActiveSheet()->setCellValue('B25', $application->metas[10]->meta_value);
+        //Referee 1 Tel No
+        $spreadsheet->getActiveSheet()->setCellValue('B26', $application->metas[11]->meta_value);
+        //Referee 1 Occupation
+        $spreadsheet->getActiveSheet()->setCellValue('B27', $application->metas[12]->meta_value);
+        //Referee 1 Years Known
+        $spreadsheet->getActiveSheet()->setCellValue('B28', $application->metas[13]->meta_value);
+
+        //Referee 2 Name
+        $spreadsheet->getActiveSheet()->setCellValue('G25', $application->metas[14]->meta_value);
+        //Referee 3 Tel No
+        $spreadsheet->getActiveSheet()->setCellValue('G26', $application->metas[15]->meta_value);
+        //Referee 4 Occupation
+        $spreadsheet->getActiveSheet()->setCellValue('G27', $application->metas[16]->meta_value);
+        //Referee 5 Years Known
+        $spreadsheet->getActiveSheet()->setCellValue('G28', $application->metas[17]->meta_value);
+
+        //Willing to travel
+        $spreadsheet->getActiveSheet()->setCellValue('B31', $application->metas[18]->meta_value);
+        //Notice Period
+        $spreadsheet->getActiveSheet()->setCellValue('G31', $application->metas[19]->meta_value." ".$application->metas[20]->meta_value);
+        //Curr Salary
+        $spreadsheet->getActiveSheet()->setCellValue('B33', $application->metas[21]->meta_value." ".$application->metas[22]->meta_value);
+        //Exp Salary
+        $spreadsheet->getActiveSheet()->setCellValue('G33', $application->metas[23]->meta_value." ".$application->metas[24]->meta_value);
+
+        //Add info
+        $spreadsheet->getActiveSheet()->setCellValue('A47', $application->metas[26]->meta_value);
+
+        //Signature
+        $spreadsheet->getActiveSheet()->setCellValue('A59', "This form is completed online");
 
 
         $writer = new Xlsx($spreadsheet);

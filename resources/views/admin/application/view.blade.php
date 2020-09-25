@@ -11,12 +11,12 @@
                 <div class="card-header ">
                     <div class="row">
                         <h5 class="card-title col-md-9">Application from {{$apl->metas[1]->meta_value}}</h5>
-                        <a href="{{route('admin-process-application',$apl)}}" class="col-md-1 text-right mr-4"><button
-                                type="button" class="btn btn-primary">Action</button></a>
-                        {{-- <a href="{{route('admin-export-application',$apl)}}" class="col-md-1 text-right mr-4"><button
-                                type="button" class="btn btn-primary">Export</button></a> --}}
-                        <button type="button" class="btn btn-primary col-md-1 text-right" data-toggle="modal"
-                            data-target="#exampleModalCenter">Log Info</button></a>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModalCenter">Log Info</button>
+                            <a href="{{route('admin-process-application',$apl)}}" class="btn btn-danger" role="button">Action</a>
+                            <a href="{{route('admin-export-application',$apl)}}" class="btn btn-success" role="button">Export</a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body ">
