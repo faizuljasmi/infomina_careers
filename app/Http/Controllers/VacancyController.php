@@ -34,7 +34,7 @@ class VacancyController extends Controller
         $vacancy = $vacancy;
         $vac_apl = Application::where('vacancy_id', $vacancy->id)->orderBy('id', 'DESC')->paginate(10);
         $vac_log_created = VacancyLog::where('vacancy_id', $vacancy->id)->where('action','created')->first();
-        $vac_log_edited = VacancyLog::where('vacancy_id', $vacancy->id)->where('action','edited')->latest()->first();;
+        $vac_log_edited = VacancyLog::where('vacancy_id', $vacancy->id)->where('action','edited')->latest()->first();
 
         return view('admin.vacancy.view')->with(compact('user','vacancy', 'vac_apl','vac_log_created','vac_log_edited'));
     }
@@ -66,7 +66,6 @@ class VacancyController extends Controller
         $vac_log->save();
 
         return view('admin.vacancy.view')->with(compact('vacancy','user'));
-
     }
 
     /**
