@@ -181,57 +181,7 @@ table[name="bmeMainBody"], body {background-color:#a6e9d7;}
 </table></td></tr></tbody>
 
 </table></td><td width="20"></td></tr></tbody>
-</table></div><div id="dv_13" class="blk_wrapper" style="">
-<table cellspacing="0" cellpadding="0" border="0" name="blk_divider" width="600" class="blk"><tbody><tr><td style="padding: 10px 20px;" class="tblCellMain">
-<table width="100%" cellspacing="0" cellpadding="0" border="0" style="border-top-width: 0px; border-top-style: none; min-width: 1px;" class="tblLine"><tbody><tr><td><span></span></td></tr></tbody>
-</table></td></tr></tbody>
-</table></div><div id="dv_14" class="blk_wrapper" style="">
-<table cellspacing="0" cellpadding="0" border="0" style="background-color: rgb(31, 200, 153);" name="blk_social_follow" width="600" class="blk"><tbody><tr><td class="tblCellMain" align="center" style="padding-top:20px; padding-bottom:20px; padding-left:20px; padding-right:20px;">
-<table class="tblContainer mblSocialContain" cellspacing="0" cellpadding="0" border="0" align="center" style="text-align:center;"><tbody><tr><td class="tdItemContainer" style="">
-<table cellspacing="0" cellpadding="0" border="0" class="mblSocialContain" style="table-layout: auto;"><tbody><tr><td valign="top" name="bmeSocialTD" class="bmeSocialTD"><!--[if gte mso 6]></td><td align="left" valign="top"><![endif]-->
-<table cellspacing="0" cellpadding="0" border="0" class="bmeFollowItem" type="facebook" style="float: left; display: block;" align="left"><tbody><tr><td align="left" class="bmeFollowItemIcon" gutter="20" width="24" style="padding-right:20px;height:20px;">
-<a href="http://benchmarkemail.benchurl.com/c/l?u=5EE6FDB&e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&seq=1" target=_blank  style="display: inline-block;background-color: rgba(0, 0, 0, 0);border-radius: 28px;border-style: solid; border-width: 2px; border-color: rgb(255, 255, 255);" target="_blank"><img
- src="https://ui.benchmarkemail.com/images/editor/socialicons/fb_btn.png" alt="Facebook" style="display: block; max-width: 114px;" border="0" width="24" height="24"></a></td></tr></tbody>
-</table><!--[if gte mso 6]></td><td align="left" valign="top"><![endif]-->
-<table cellspacing="0" cellpadding="0" border="0" class="bmeFollowItem" type="twitter" style="float: left; display: block;" align="left"><tbody><tr><td align="left" class="bmeFollowItemIcon" gutter="20" width="24" style="padding-right:20px;height:20px;">
-<a href="http://benchmarkemail.benchurl.com/c/l?u=5EE6FDD&e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&seq=1" target=_blank  style="display: inline-block;background-color: rgba(0, 0, 0, 0);border-radius: 28px;border-style: solid; border-width: 2px; border-color: rgb(255, 255, 255);" target="_blank"><img
- src="https://ui.benchmarkemail.com/images/editor/socialicons/tw_btn.png" alt="Twitter" style="display: block; max-width: 114px;" border="0" width="24" height="24"></a></td></tr></tbody>
-</table><!--[if gte mso 6]></td><td align="left" valign="top"><![endif]-->
-<table cellspacing="0" cellpadding="0" border="0" class="bmeFollowItem" type="email" style="float: left; display: block;" align="left"><tbody><tr><td align="left" class="bmeFollowItemIcon" gutter="20" width="24" style="height:20px;">
-<a href="mailto:" style="display: inline-block;background-color: rgba(0, 0, 0, 0);border-radius: 28px;border-style: solid; border-width: 2px; border-color: rgb(255, 255, 255);" target="_blank"><img
- src="https://ui.benchmarkemail.com/images/editor/socialicons/em_btn.png" alt="Email" style="display: block; max-width: 114px;" border="0" width="24" height="24"></a></td></tr></tbody>
-</table></td></tr></tbody>
-</table></td></tr></tbody>
-</table></td></tr></tbody>
 </table></div>
-
-
-</td></tr> </tbody>
-</table></td> </tr>  <tr><td width="100%" class="blk_container bmeHolder" name="bmeFooter" valign="top" align="center" style="color: rgb(102, 102, 102); border: 0px none transparent;" bgcolor=""><div id="dv_12" class="blk_wrapper">
-<table width="600" cellspacing="0" cellpadding="0" border="0" class="blk" name="blk_permission" style=""><tbody><tr><td name="tblCell" class="tblCell" style="padding:20px;" valign="top" align="left">
-<table cellpadding="0" cellspacing="0" border="0" width="100%"><tbody><tr><td name="bmePermissionText" style="text-align:left;" align="left"><span style="font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 11px;line-height: 140%;">
-<a style="color: #16a7e0;" target="_new" href="http://benchmarkemail.benchurl.com/c/v?e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D">View this email in your browser</a>
-</span></td></tr></tbody>
-</table></td></tr></tbody>
-</table></div><div id="dv_16" class="blk_wrapper">
-<table width="600" cellspacing="0" cellpadding="0" border="0" class="blk" name="blk_footer" style=""><tbody><tr><td name="tblCell" class="tblCell" style="padding:20px;" valign="top" align="left">
-<table cellpadding="0" cellspacing="0" border="0" width="100%"><tbody><tr><td name="bmeBadgeText" style="text-align:left; word-break: break-word;" align="left"><span id="spnFooterText" style="font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 11px; line-height: 140%;">This message was sent to amilcar.cruz@benchmarkemail.com by benchmarkdesignsystem.gmail.com@email.benchmarkapps.com
-<br>10621 Calle Lee, Building 141, Los Alamitos, CA, 90720</span>
-<br>
-<br><span style="font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 11px; line-height: 140%;"><span href=http://benchmarkemail.benchurl.com/c/su?e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&relid=><img
- src="https://www.benchmarkemail.com/images/verified.png" alt="Unsubscribe from all mailings" title="Unsubscribe from all mailings" border="0"></span>
-<a class=bmefootertext  target=_new  href="http://benchmarkemail.benchurl.com/c/su?e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&relid="  style="color:inherit;text-decoration:underline;">Unsubscribe</a>   |
-<a class=bmefootertext  target=_new  href="http://benchmarkemail.benchurl.com/c/s?e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&relid="  style="color:inherit;text-decoration:underline;">Manage Subscription</a>   |
-<a class=bmefootertext  target=_new  href="http://benchmarkemail.benchurl.com/c/f?e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&relid="  style="color:inherit;text-decoration:underline;">Forward Email</a>  |
-<a class=bmefootertext  target=_new  href="http://benchmarkemail.benchurl.com/Abuse?e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&relid="  style="color:inherit;text-decoration:underline;">Report Abuse</a>
-<br></span></td></tr><tr><td name="bmeBadgeImage" style="text-align: left; padding-top: 20px; word-break: break-word;" align="left">
-<a href="http://www.benchmarkemail.com?p=500289" target="_new"><img
- src="https://www.benchmarkemail.com/images/web4/misc/emailfooter/opt12.png"  style="max-width:144px;" border=0 /></a></td></tr></tbody>
-</table></td></tr></tbody>
-</table></div></td></tr> </tbody>
-</table> </td></tr></tbody>
-</table></td></tr></tbody>
-</table>
 </body>
 </html><img
  src='http://benchmarkemail.benchurl.com/c/o?e=8E4B52&c=91CEA&t=1&l=7889F345&email=hL2iimIGZvj2QooSzVze1t7P%2FZjRPRKrj2c0%2B7DqUhU%3D&relid=' alt='' border=0 style="display:none;" height=1 width=1>
