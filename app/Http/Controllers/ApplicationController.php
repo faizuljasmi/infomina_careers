@@ -243,7 +243,7 @@ class ApplicationController extends Controller
 
             //If GAMBAR PEMOHON uploaded in wrong format
             if($request->hasFile('resume_applicant') == true){
-                if(strpos($request->file('resume_applicant')->getMimeType(), 'pdf') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 ){
+                if(strpos($request->file('resume_applicant')->getMimeType(), 'pdf') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'doc') !==  0 ){
                     $error = $error.'Your uploaded file is not in the correct format.';
                 }
             }
