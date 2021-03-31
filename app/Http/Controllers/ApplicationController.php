@@ -247,7 +247,7 @@ class ApplicationController extends Controller
                     $error = $error.'Your uploaded file is not in the correct format.';
                 }
             }
-            return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error);
+            return redirect()->route('e-form', ['apl_no' => $request->get('apl_no')])->with('error', $error);
         }
 
         $inputs = $request->all();
@@ -451,10 +451,12 @@ class ApplicationController extends Controller
         $spreadsheet->getActiveSheet()->setCellValue('A59', "This form is completed online");
 
 
+        $file_name = str_replace(' ', '_', $application->metas[1]->meta_value);
+        $file_name = $file_name."_form.xlsx";
         $writer = new Xlsx($spreadsheet);
         $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment; filename="Leave_Applications_All.xlsx"');
+       header('Content-Disposition: attachment; filename="'. urlencode($file_name).'"');
         $writer->save("php://output");
     }
 
