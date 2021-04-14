@@ -50,6 +50,8 @@ class ApplicationController extends Controller
      */
     public function store(Request $request, Vacancy $vacancy)
     {
+        //dd($request->all());
+
         $request->flash();
         $validator = Validator::make(
             $request->all(),
@@ -388,12 +390,18 @@ class ApplicationController extends Controller
     }
 
     public function export_admin(Application $application){
+        
+        if($application->created_at < Carbon::parse('06-4-2021')){
         $inputFileName = './excel/apl_form.xlsx';
+        } else{
+            $inputFileName = './excel/apl_form_new.xlsx';
+        }
 
         /** Load $inputFileName to a Spreadsheet Object  **/
         $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
 
-        //Set data into form
+        if($application->created_at < Carbon::parse('06-4-2021')){
+            //Set data into form
         //Job Title
         $spreadsheet->getActiveSheet()->setCellValue('C4', $application->vacancy->job_title);
         //Date
@@ -449,6 +457,74 @@ class ApplicationController extends Controller
 
         //Signature
         $spreadsheet->getActiveSheet()->setCellValue('A59', "This form is completed online");
+        }
+        else{
+            //Set data into form
+        //Job Title
+        $spreadsheet->getActiveSheet()->setCellValue('C4', $application->vacancy->job_title);
+        //Date
+        $spreadsheet->getActiveSheet()->setCellValue('H4', Carbon::parse($application->created_at)->isoFormat('D MMM YYYY'));
+        //Name
+        $spreadsheet->getActiveSheet()->setCellValue('A8', $application->metas[1]->meta_value);
+        //ID NO
+        $spreadsheet->getActiveSheet()->setCellValue('F8', $application->metas[2]->meta_value);
+        //Gender
+        $spreadsheet->getActiveSheet()->setCellValue('G8', $application->metas[3]->meta_value);
+        //Address
+        $spreadsheet->getActiveSheet()->setCellValue('B9', $application->metas[8]->meta_value);
+        //City
+        $spreadsheet->getActiveSheet()->setCellValue('B10', $application->metas[9]->meta_value);
+        //State
+        $spreadsheet->getActiveSheet()->setCellValue('E10', $application->metas[10]->meta_value);
+        //Postcode
+        $spreadsheet->getActiveSheet()->setCellValue('H10', $application->metas[11]->meta_value);
+        //Email
+        $spreadsheet->getActiveSheet()->setCellValue('A12', $application->metas[5]->meta_value);
+        //Mobile No
+        $spreadsheet->getActiveSheet()->setCellValue('C12', $application->metas[6]->meta_value);
+        //Office No
+        $spreadsheet->getActiveSheet()->setCellValue('E12', $application->metas[7]->meta_value);
+        //Marital Status
+        $spreadsheet->getActiveSheet()->setCellValue('G12', $application->metas[4]->meta_value);
+        //Health Conditions
+        $spreadsheet->getActiveSheet()->setCellValue('A16', $application->metas[12]->meta_value);
+        //Is pregnant
+        $spreadsheet->getActiveSheet()->setCellValue('D19', $application->metas[13]->meta_value);
+
+        //Referee 1 Name
+        $spreadsheet->getActiveSheet()->setCellValue('B27', $application->metas[14]->meta_value);
+        //Referee 1 Tel No
+        $spreadsheet->getActiveSheet()->setCellValue('B28', $application->metas[15]->meta_value);
+        //Referee 1 Occupation
+        $spreadsheet->getActiveSheet()->setCellValue('B29', $application->metas[16]->meta_value);
+        //Referee 1 Years Known
+        $spreadsheet->getActiveSheet()->setCellValue('B30', $application->metas[17]->meta_value);
+
+        //Referee 2 Name
+        $spreadsheet->getActiveSheet()->setCellValue('G27', $application->metas[18]->meta_value);
+        //Referee 3 Tel No
+        $spreadsheet->getActiveSheet()->setCellValue('G28', $application->metas[19]->meta_value);
+        //Referee 4 Occupation
+        $spreadsheet->getActiveSheet()->setCellValue('G29', $application->metas[20]->meta_value);
+        //Referee 5 Years Known
+        $spreadsheet->getActiveSheet()->setCellValue('G30', $application->metas[21]->meta_value);
+
+        //Willing to travel
+        $spreadsheet->getActiveSheet()->setCellValue('B33', $application->metas[22]->meta_value);
+        //Notice Period
+        $spreadsheet->getActiveSheet()->setCellValue('G33', $application->metas[23]->meta_value." ".$application->metas[24]->meta_value);
+        //Curr Salary
+        $spreadsheet->getActiveSheet()->setCellValue('B35', $application->metas[25]->meta_value." ".$application->metas[26]->meta_value);
+        //Exp Salary
+        $spreadsheet->getActiveSheet()->setCellValue('G35', $application->metas[27]->meta_value." ".$application->metas[28]->meta_value);
+
+        //Add info
+        $spreadsheet->getActiveSheet()->setCellValue('A49', $application->metas[30]->meta_value);
+
+        //Signature
+        $spreadsheet->getActiveSheet()->setCellValue('A61', "This form is completed online");
+        }
+        
 
 
         $file_name = str_replace(' ', '_', $application->metas[1]->meta_value);

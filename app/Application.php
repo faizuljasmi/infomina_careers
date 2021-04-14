@@ -29,4 +29,8 @@ class Application extends Model
     public function getNewResumeUrlAttribute(){
         return $this->metas[28]->meta_value ? url('/storage/'.$this->metas[28]->meta_value) : 'https://placehold.it/900x300';
     }
+
+    public function getNewNewResumeUrlAttribute(){
+        return $this->metas[32]->meta_value ? url('/storage/'.$this->metas[32]->meta_value) : 'https://placehold.it/900x300';
+    }
 }
