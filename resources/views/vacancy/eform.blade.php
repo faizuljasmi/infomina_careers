@@ -154,6 +154,50 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="float-left" for="applicant_address">Address</label>
+                                                            <input type="text" class="form-control" id="applicant_address" name="applicant_address" required></input>
+                                                            <div class="invalid-feedback">
+                                                                Please fill in your address
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-md-4">
+                                                            <label class="float-left" for="applicant_address">City</label>
+                                                            <input type="text" class="form-control" id="applicant_city" name="applicant_city" required></input>
+                                                            <div class="invalid-feedback">
+                                                                Please fill in your city
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                That's a nice city!
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label class="float-left" for="applicant_state">State</label>
+                                                            <input type="text" class="form-control" id="applicant_state" name="applicant_state" required></input>
+                                                            <div class="invalid-feedback">
+                                                                Please fill in your state of residential
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Good!
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label class="float-left" for="applicant_postcode">Postcode</label>
+                                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_postcode" name="applicant_postcode" required></input>
+                                                            <div class="invalid-feedback">
+                                                                Please fill in your postcode
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Just in case!
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="p-3 mb-2 border rounded border-dark mt-4 bg-light">
                                                     <h6 class="mt-2 text-center">Health Conditions</h6>
