@@ -391,7 +391,7 @@ class ApplicationController extends Controller
 
     public function export_admin(Application $application){
         
-        if($application->created_at < Carbon::parse('06-4-2021')){
+        if($application->created_at < Carbon::parse('01-5-2021')){
         $inputFileName = './excel/apl_form.xlsx';
         } else{
             $inputFileName = './excel/apl_form_new.xlsx';
@@ -400,7 +400,7 @@ class ApplicationController extends Controller
         /** Load $inputFileName to a Spreadsheet Object  **/
         $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileName);
 
-        if($application->created_at < Carbon::parse('06-4-2021')){
+        if($application->created_at < Carbon::parse('01-5-2021')){
             //Set data into form
         //Job Title
         $spreadsheet->getActiveSheet()->setCellValue('C4', $application->vacancy->job_title);
@@ -467,7 +467,7 @@ class ApplicationController extends Controller
         //Name
         $spreadsheet->getActiveSheet()->setCellValue('A8', $application->metas[1]->meta_value);
         //ID NO
-        $spreadsheet->getActiveSheet()->setCellValue('F8', $application->metas[2]->meta_value);
+        $spreadsheet->getActiveSheet()->setCellValue('E8', $application->metas[2]->meta_value);
         //Gender
         $spreadsheet->getActiveSheet()->setCellValue('G8', $application->metas[3]->meta_value);
         //Address
