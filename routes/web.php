@@ -16,7 +16,7 @@ use App\Vacancy;
 
 Route::get('/', function () {
     $user = auth()->user();
-    $vacancies = Vacancy::paginate(10);
+    $vacancies = Vacancy::where('is_active','Yes')->paginate(10);
     return view('welcome')->with(compact('vacancies','user'));
 })->name('homepage');
 
