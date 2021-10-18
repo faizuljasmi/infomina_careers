@@ -406,9 +406,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="p-3 mb-2 border rounded border-info mt-4 bg-light">
+                                                    <h6 class="mt-2 text-center">
+                                                            PDPA Consent
+                                                    </h6>
                                                     <div class="row text-center">
                                                         <div class="form-group col-md-12">
-                                                            <p class="float-left mt-3">By submitting your information to Infomina, you hereby agree that Infomina may collect, 
+                                                            <p class="float-left">By submitting your information to Infomina, you hereby agree that Infomina may collect, 
                                                                 obtain, store and process your personal data that you provide in this form for the purpose of receiving updates, 
                                                                 news, promotional and marketing mails or materials from Infomina .
                                                             </p>
