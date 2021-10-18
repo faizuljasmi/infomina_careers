@@ -405,6 +405,41 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="p-3 mb-2 border rounded border-info mt-4 bg-light">
+                                                    <div class="row text-center">
+                                                        <div class="form-group col-md-12">
+                                                            <p class="float-left mt-3">By submitting your information to Infomina, you hereby agree that Infomina may collect, 
+                                                                obtain, store and process your personal data that you provide in this form for the purpose of receiving updates, 
+                                                                news, promotional and marketing mails or materials from Infomina .
+                                                            </p>
+                                                            <div class="scroll-box">
+                                                                <div class="text-left">
+                                                                    <p class="font-weight-bold">You hereby give your consent to Infomina to:-</p>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>- Store and process your Personal Data, such as your full name, passport or identity card number, nationality and religion.</li>
+                                                                        <li>- Disclose your Personal Data to the relevant governmental authorities or third parties where required by law or for legal purposes.</li>
+                                                                        <li>- Resume or CVs when you apply job with us.</li>
+                                                                    </ul>
+                                                                    <p>In addition, your personal data may be transferred to any company within Infomina Group which may involve sending your data to a location outside Malaysia. 
+                                                                        For the purpose of updating or correcting such data, you may at any time apply to the Infomina to have access to your personal data which are stored by Infomina.</p>
+                                                                    <p>For the avoidance of doubt, Personal Data includes all data defined within the Personal Data Protection Act 2010 including all data you had disclosed to Infomina in this Form.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-3">
+                                                                <input class="form-check-input text-center" type="checkbox" value="Yes" id="applicant_conf_pdpa" name="applicant_conf_pdpa" required>
+                                                                <label class="form-check-label" for="applicant_conf_pdpa">
+                                                                    Accept
+                                                                </label>
+                                                                <div class="invalid-feedback">
+                                                                    Please read this area and check the box
+                                                                </div>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="p-3 mb-2 border rounded border-danger mt-4 bg-light">
                                                     <div class="row text-center">
                                                         <div class="form-group col-md-12">
@@ -494,6 +529,14 @@
         transform: translate(-50%, -50%);
         z-index: 100;
     }
+
+    .scroll-box {
+  overflow-y: scroll;
+  width: 100%;
+  height: 150px;
+  margin: 0 auto;
+  background-color: white;
+}
 </style>
 @endsection
 

@@ -9,7 +9,7 @@
         <div class="col-md-8">
             <div class="card ">
                 <div class="card-header ">
-                    <h5 class="card-title col-md-12">{{$vacancy->job_title}}</h5>
+                <h5 class="card-title col-md-12">{{$vacancy->job_title}} <span class="badge badge-{{$vacancy->is_active == "Yes" ? "success":"danger"}}">{{$vacancy->is_active == "Yes" ? "Active":"Inactive"}}</span></h5>
                     <div class="row">
                     <p class="col-md-6 p-3 mb-2 bg-light rounded">Created by: @if($vac_log_created == null)
                         -
