@@ -448,9 +448,9 @@ class ApplicationController extends Controller
         //Notice Period
         $spreadsheet->getActiveSheet()->setCellValue('G31', $application->metas[19]->meta_value." ".$application->metas[20]->meta_value);
         //Curr Salary
-        $spreadsheet->getActiveSheet()->setCellValue('B33', $application->metas[21]->meta_value." ".$application->metas[22]->meta_value);
+        //$spreadsheet->getActiveSheet()->setCellValue('B33', $application->metas[21]->meta_value." ".$application->metas[22]->meta_value);
         //Exp Salary
-        $spreadsheet->getActiveSheet()->setCellValue('G33', $application->metas[23]->meta_value." ".$application->metas[24]->meta_value);
+        //$spreadsheet->getActiveSheet()->setCellValue('G33', $application->metas[23]->meta_value." ".$application->metas[24]->meta_value);
 
         //Add info
         $spreadsheet->getActiveSheet()->setCellValue('A47', $application->metas[26]->meta_value);
@@ -514,9 +514,9 @@ class ApplicationController extends Controller
         //Notice Period
         $spreadsheet->getActiveSheet()->setCellValue('G33', $application->metas[23]->meta_value." ".$application->metas[24]->meta_value);
         //Curr Salary
-        $spreadsheet->getActiveSheet()->setCellValue('B35', $application->metas[25]->meta_value." ".$application->metas[26]->meta_value);
+        //$spreadsheet->getActiveSheet()->setCellValue('B35', $application->metas[25]->meta_value." ".$application->metas[26]->meta_value);
         //Exp Salary
-        $spreadsheet->getActiveSheet()->setCellValue('G35', $application->metas[27]->meta_value." ".$application->metas[28]->meta_value);
+        //$spreadsheet->getActiveSheet()->setCellValue('G35', $application->metas[27]->meta_value." ".$application->metas[28]->meta_value);
 
         //Add info
         $spreadsheet->getActiveSheet()->setCellValue('A49', $application->metas[30]->meta_value);
