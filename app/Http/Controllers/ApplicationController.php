@@ -178,12 +178,12 @@ class ApplicationController extends Controller
     public function eform_show($apl_no){
         $app = Application::where('apl_no', $apl_no)->first();
         //dd($app);
-        $vacancies = Vacancy::all();
+        $vacancies = Vacancy::where('is_active','Yes')->get();
         return view('vacancy.eform')->with(compact('vacancies','app'));
     }
 
     public function eform_create(){
-        $vacancies = Vacancy::all();
+        $vacancies = Vacancy::where('is_active','Yes')->get();
         $user = auth()->user();
         return view('admin.eform.create')->with(compact('vacancies','user'));
     }
