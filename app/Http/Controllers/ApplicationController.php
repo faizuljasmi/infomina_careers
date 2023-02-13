@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use App\ApplicationMeta;
 use App\User;
+use App\Country;
 use App\ApplicationLog;
 use Mail;
 use App\Mail\ApplicationSent;
@@ -39,7 +40,8 @@ class ApplicationController extends Controller
      */
     public function create(Vacancy $vacancy)
     {
-        return view('vacancy.apply')->with(compact('vacancy'));
+        $countries = Country::all();
+        return view('vacancy.apply')->with(compact('vacancy','countries'));
     }
 
     /**
@@ -159,6 +161,7 @@ class ApplicationController extends Controller
     {
         $apl_no = $request->get('apl_no');
         $apl = Application::where('apl_no', $apl_no)->get()->first();
+        $countries = Country::all();
         if($apl == null){
             return redirect()->to('/')->with('error', "Application cannot be found. Make sure your application number is correct.");
         }
@@ -166,7 +169,7 @@ class ApplicationController extends Controller
             return redirect()->to('/')->with('error', "Application has not been completed. Make sure to fill up the e-Form for it to be processed.");
         }
 
-        return view('application.view')->with(compact('apl'));
+        return view('application.view')->with(compact('apl','countries'));
     }
 
     public function eform_index(){
@@ -179,7 +182,8 @@ class ApplicationController extends Controller
         $app = Application::where('apl_no', $apl_no)->first();
         //dd($app);
         $vacancies = Vacancy::where('is_active','Yes')->get();
-        return view('vacancy.eform')->with(compact('vacancies','app'));
+        $countries = Country::all();
+        return view('vacancy.eform')->with(compact('vacancies','app','countries'));
     }
 
     public function eform_create(){
@@ -393,7 +397,10 @@ class ApplicationController extends Controller
         
         if($application->created_at < Carbon::parse('01-5-2021')){
         $inputFileName = './excel/apl_form.xlsx';
-        } else{
+        } elseif($application->created_at > Carbon::parse('13-02-2023')){
+            $inputFileName = './excel/apl_form_new_new.xlsx';
+        } 
+        else{
             $inputFileName = './excel/apl_form_new.xlsx';
         }
 
@@ -457,6 +464,75 @@ class ApplicationController extends Controller
 
         //Signature
         $spreadsheet->getActiveSheet()->setCellValue('A59', "This form is completed online");
+        } elseif($application->created_at > Carbon::parse('13-02-2023')){
+               //Set data into form
+        //Job Title
+        $spreadsheet->getActiveSheet()->setCellValue('C4', $application->vacancy->job_title);
+        //Date
+        $spreadsheet->getActiveSheet()->setCellValue('H4', Carbon::parse($application->created_at)->isoFormat('D MMM YYYY'));
+        //Name
+        $spreadsheet->getActiveSheet()->setCellValue('A8', $application->metas[1]->meta_value);
+        //ID NO
+        $spreadsheet->getActiveSheet()->setCellValue('E8', $application->metas[3]->meta_value);
+        //Gender
+        $spreadsheet->getActiveSheet()->setCellValue('G8', $application->metas[4]->meta_value);
+        //Address
+        $spreadsheet->getActiveSheet()->setCellValue('B9', $application->metas[10]->meta_value);
+        //City
+        $spreadsheet->getActiveSheet()->setCellValue('B10', $application->metas[11]->meta_value);
+        //State
+        $spreadsheet->getActiveSheet()->setCellValue('E10', $application->metas[12]->meta_value);
+        //Postcode
+        $spreadsheet->getActiveSheet()->setCellValue('H10', $application->metas[13]->meta_value);
+        //Nationality
+        $spreadsheet->getActiveSheet()->setCellValue('B11', $application->metas[2]->meta_value);
+        //DOB
+        $spreadsheet->getActiveSheet()->setCellValue('F11', $application->metas[8]->meta_value);
+        //Email
+        $spreadsheet->getActiveSheet()->setCellValue('A13', $application->metas[5]->meta_value);
+        //Mobile No
+        $spreadsheet->getActiveSheet()->setCellValue('C13', $application->metas[6]->meta_value);
+        //Office No
+        $spreadsheet->getActiveSheet()->setCellValue('E13', $application->metas[7]->meta_value);
+        //Marital Status
+        $spreadsheet->getActiveSheet()->setCellValue('G13', $application->metas[9]->meta_value);
+        //Health Conditions
+        $spreadsheet->getActiveSheet()->setCellValue('A17', $application->metas[14]->meta_value);
+        //Is pregnant
+        $spreadsheet->getActiveSheet()->setCellValue('D20', $application->metas[15]->meta_value);
+
+        //Referee 1 Name
+        $spreadsheet->getActiveSheet()->setCellValue('B28', $application->metas[16]->meta_value);
+        //Referee 1 Tel No
+        $spreadsheet->getActiveSheet()->setCellValue('B29', $application->metas[17]->meta_value);
+        //Referee 1 Occupation
+        $spreadsheet->getActiveSheet()->setCellValue('B30', $application->metas[18]->meta_value);
+        //Referee 1 Years Known
+        $spreadsheet->getActiveSheet()->setCellValue('B31', $application->metas[19]->meta_value);
+
+        //Referee 2 Name
+        $spreadsheet->getActiveSheet()->setCellValue('G28', $application->metas[20]->meta_value);
+        //Referee 3 Tel No
+        $spreadsheet->getActiveSheet()->setCellValue('G29', $application->metas[21]->meta_value);
+        //Referee 4 Occupation
+        $spreadsheet->getActiveSheet()->setCellValue('G30', $application->metas[22]->meta_value);
+        //Referee 5 Years Known
+        $spreadsheet->getActiveSheet()->setCellValue('G31', $application->metas[23]->meta_value);
+
+        //Willing to travel
+        $spreadsheet->getActiveSheet()->setCellValue('B34', $application->metas[24]->meta_value);
+        //Notice Period
+        $spreadsheet->getActiveSheet()->setCellValue('G34', $application->metas[25]->meta_value." ".$application->metas[26]->meta_value);
+        //Curr Salary
+        //$spreadsheet->getActiveSheet()->setCellValue('B35', $application->metas[25]->meta_value." ".$application->metas[26]->meta_value);
+        //Exp Salary
+        //$spreadsheet->getActiveSheet()->setCellValue('G35', $application->metas[27]->meta_value." ".$application->metas[28]->meta_value);
+
+        //Add info
+        $spreadsheet->getActiveSheet()->setCellValue('A51', $application->metas[32]->meta_value);
+
+        //Signature
+        $spreadsheet->getActiveSheet()->setCellValue('A62', "This form is completed online");
         }
         else{
             //Set data into form

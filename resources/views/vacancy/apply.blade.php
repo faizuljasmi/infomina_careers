@@ -6,6 +6,7 @@
 
 @section('head')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 @endsection
 
 @section('content')
@@ -55,11 +56,26 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label class="float-left" for="applicant_ic">NRIC No
-                                                                (without -)</label>
-                                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_ic" name="applicant_ic" placeholder="IC No." maxLength="12" required>
+                                                            <label class="float-left" for="applicant_nationality">Nationality</label>
+                                                            <select class="form-control" id="applicant_nationality" name="applicant_nationality" required>
+                                                                <option value="">Choose one</option>
+                                                                @foreach($countries as $country)
+                                                                  <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                             <div class="invalid-feedback">
-                                                                Your forgot your IC number
+                                                                Please choose one
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Nice...
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                        <label class="float-left" for="applicant_ic">National ID No. <i class="fa fa-question-circle" data-toggle="popover" title="National ID Guide" data-content="NRIC (MY): 950101XXXXXX, No '-'
+                                                                                                                                                                                                                        NIK: 320000564XXXXXXX " data-trigger="hover"></i></label>
+                                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9a-zA-Z]/g, '')" class="form-control" id="applicant_ic" name="applicant_ic" placeholder="ID No." required>
+                                                            <div class="invalid-feedback">
+                                                                Your forgot your ID number
                                                             </div>
                                                             <div class="valid-feedback">
                                                                 Looks good...
@@ -79,6 +95,43 @@
                                                                 Gotcha!
                                                             </div>
                                                         </div>
+                                                        
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-4">
+                                                            <label class="float-left" for="applicant_email">Email</label>
+                                                            <input type="email" class="form-control" id="applicant_email" name="applicant_email" placeholder="Email" required>
+                                                            <div class="invalid-feedback">
+                                                                It's important that we get your email
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Good, we will contact you thru it. So make sure it's
+                                                                right!
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label class="float-left" for="applicant_tel_mobile">Tel No.
+                                                                (Mobile)</label>
+                                                            <input type="text" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_tel_mobile" name="applicant_tel_mobile" required>
+                                                            <div class="invalid-feedback">
+                                                                Please fill in your phone number
+                                                            </div>
+                                                            <div class="valid-feedback">
+                                                                Looks good!
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label class="float-left" for="applicant_tel_office">Tel No.
+                                                                (Office)</label>
+                                                            <input type="text" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_tel_office" name="applicant_tel_office">
+                                                            
+                                                        </div>
+
+                                                        <div class="form-group col-md-2">
+                                                            <label class="float-left" for="applicant_dob">Date of Birth</label>
+                                                                <input type="date" class="form-control" id="applicant_dob" name="applicant_dob" required>
+                                                        </div>
+                                                        
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_marital_stat">Marital
                                                                 Status</label>
@@ -93,36 +146,6 @@
                                                             <div class="valid-feedback">
                                                                 Nice...
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-4">
-                                                            <label class="float-left" for="applicant_email">Email</label>
-                                                            <input type="email" class="form-control" id="applicant_email" name="applicant_email" placeholder="Email" required>
-                                                            <div class="invalid-feedback">
-                                                                It's important that we get your email
-                                                            </div>
-                                                            <div class="valid-feedback">
-                                                                Good, we will contact you thru it. So make sure it's
-                                                                right!
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label class="float-left" for="applicant_tel_mobile">Tel No.
-                                                                (Mobile)</label>
-                                                            <input type="text" maxlength="12" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_tel_mobile" name="applicant_tel_mobile" required>
-                                                            <div class="invalid-feedback">
-                                                                Please fill in your phone number
-                                                            </div>
-                                                            <div class="valid-feedback">
-                                                                Looks good!
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label class="float-left" for="applicant_tel_office">Tel No.
-                                                                (Office)</label>
-                                                            <input type="text" maxlength="12" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_tel_office" name="applicant_tel_office">
-                                                            
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -547,6 +570,7 @@
 <script>
     $(document).ready(function() {
         demo.checkFullPageBackgroundImage();
+        $('[data-toggle="popover"]').popover();
     });
 
     function checkGender() {

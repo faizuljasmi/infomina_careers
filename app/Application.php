@@ -33,4 +33,17 @@ class Application extends Model
     public function getNewNewResumeUrlAttribute(){
         return $this->metas[32]->meta_value ? url('/storage/'.$this->metas[32]->meta_value) : 'https://placehold.it/900x300';
     }
+
+    public function getNewNewNewResumeUrlAttribute(){
+        return $this->metas[35]->meta_value ? url('/storage/'.$this->metas[35]->meta_value) : 'https://placehold.it/900x300';
+    }
+
+    public function getResumeUrlAttribute(){
+        foreach ($this->metas as $meta) {
+            if ($meta->meta_key == "resume_applicant") {
+              return url('/storage/'.$meta->meta_value);
+            }
+          }
+          return 'https://placehold.it/900x300';
+    }
 }
