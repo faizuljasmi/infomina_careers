@@ -397,7 +397,7 @@ class ApplicationController extends Controller
         
         if($application->created_at < Carbon::parse('01-5-2021')){
         $inputFileName = './excel/apl_form.xlsx';
-        } elseif($application->created_at > Carbon::parse('13-02-2023')){
+        } elseif($application->created_at > Carbon::parse('15-02-2023')){
             $inputFileName = './excel/apl_form_new_new.xlsx';
         } 
         else{
@@ -464,7 +464,7 @@ class ApplicationController extends Controller
 
         //Signature
         $spreadsheet->getActiveSheet()->setCellValue('A59', "This form is completed online");
-        } elseif($application->created_at > Carbon::parse('13-02-2023')){
+        } elseif($application->created_at > Carbon::parse('15-02-2023')){
                //Set data into form
         //Job Title
         $spreadsheet->getActiveSheet()->setCellValue('C4', $application->vacancy->job_title);
