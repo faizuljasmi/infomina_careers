@@ -55,7 +55,7 @@
                                                 <div class="form-group col-md-2">
                                                     <label class="float-left" for="applicant_ic">NRIC No
                                                     </label>
-                                                    <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_ic" name="applicant_ic" value="{{$apl->metas[2]->meta_value}}" maxLength="12" readonly>
+                                                    <input type="text" oninput="this.value = this.value.replace(/[^0-9a-zA-Z-\s]/g, '')" class="form-control" id="applicant_ic" name="applicant_ic" value="{{$apl->metas[2]->meta_value}}" readonly>
                                                 </div>
                                                 <div class="form-group col-md-2">
                                                     <label class="float-left" for="applicant_gender">Gender</label>
@@ -321,7 +321,7 @@
                                 <div class="form-group col-md-2">
                                     <label class="float-left" for="applicant_ic">National ID No.
                                     </label>
-                                    <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_ic" name="applicant_ic" value="{{$apl->metas[3]->meta_value}}" maxLength="12" readonly>
+                                    <input type="text" oninput="this.value = this.value.replace(/[^0-9a-zA-Z-\s]/g, '')" class="form-control" id="applicant_ic" name="applicant_ic" value="{{$apl->metas[3]->meta_value}}" readonly>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label class="float-left" for="applicant_gender">Gender</label>
@@ -588,7 +588,7 @@
                                             <div class="form-group col-md-2">
                                                 <label class="float-left" for="applicant_ic">NRIC No
                                                 </label>
-                                                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_ic" name="applicant_ic" value="{{$apl->metas[2]->meta_value}}" maxLength="12" readonly>
+                                                <input type="text" oninput="this.value = this.value.replace(/[^0-9a-zA-Z-\s]/g, '')" class="form-control" id="applicant_ic" name="applicant_ic" value="{{$apl->metas[2]->meta_value}}" readonly>
                                             </div>
                                             <div class="form-group col-md-2">
                                                 <label class="float-left" for="applicant_gender">Gender</label>
