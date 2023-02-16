@@ -71,11 +71,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                        <label class="float-left" for="applicant_ic">National ID No. <i class="fa fa-question-circle" data-toggle="popover" title="National ID Guide" data-content="NRIC (MY): 950101XXXXXX <br>                 
+                                                        <label class="float-left" for="applicant_ic">National ID No. <a tabindex="0" class="fa fa-question-circle" role="button" data-toggle="popover" title="National ID Guide" data-content="NRIC (MY): 950101XXXXXX <br>                 
                                                                                                                                                                                                                         NIK (IND): 320000564XXXXXXX <br>         
                                                                                                                                                                                                                         National ID No. (TH): 5 0499 40598 45 0 <br>
                                                                                                                                                                                                                         National ID No. (PH): 1234-5678-9101-1213
-                                                                                                                                                                                                                         " data-html="true" data-trigger="click"></i></label>
+                                                                                                                                                                                                                         " data-html="true" data-trigger="focus"></a></label>
                                                             <input type="text" oninput="this.value = this.value.replace(/[^0-9a-zA-Z-\s]/g, '')" class="form-control" id="applicant_ic" name="applicant_ic" placeholder="ID No." required>
 
                                                             <div class="invalid-feedback">
@@ -575,6 +575,9 @@
     $(document).ready(function() {
         demo.checkFullPageBackgroundImage();
         $('[data-toggle="popover"]').popover();
+        $('.popover-dismiss').popover({
+  trigger: 'focus'
+})
     });
 
     function checkGender() {
