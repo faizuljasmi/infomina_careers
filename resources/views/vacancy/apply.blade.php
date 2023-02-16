@@ -574,15 +574,7 @@
 <script>
     $(document).ready(function() {
         demo.checkFullPageBackgroundImage();
-        $('[data-toggle="popover"]').popover({
-                trigger: 'click',
-                html: true,
-                container: 'body',
-                sanitize: false,
-                boundary: 'window'
-            }).on('click', function(e) {
-                $('[data-toggle="popover"]').not(this).popover('hide');
-            });
+        $('[data-toggle="popover"]').popover();
     });
 
     function checkGender() {
