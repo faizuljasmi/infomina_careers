@@ -466,13 +466,20 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
+                                                        @if ($app->vacancy->job_type == 'elite-program')
                                                             <label class="float-left" for="resume_applicant">Upload
-                                                                Resume</label>
-                                                            <input type="file" name="resume_applicant"
-                                                                class="form-control" required>
+                                                                Attachment(s) (supported format: pdg, doc, docx, jpeg, jpg, png)<br> Make sure to select all related documents, and upload it one go</label>
+                                                                <input type="file" name="resume_applicant[]" class="form-control" data-show-upload="true" data-show-caption="true" required multiple>
+                                                            <div class="invalid-feedback">
+                                                                Please upload your attachment(s)
+                                                            </div>
+                                                            @else
+                                                            <label class="float-left" for="resume_applicant">Upload Resume (supported format: pdf, doc, docx)</label>
+                                                                <input type="file" name="resume_applicant[]" class="form-control" data-show-upload="true" data-show-caption="true" required multiple>
                                                             <div class="invalid-feedback">
                                                                 Please upload your resume
                                                             </div>
+                                                            @endif
                                                             <div class="valid-feedback">
                                                                 Looks good!
                                                             </div>

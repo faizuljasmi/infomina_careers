@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\ApplicationMeta;
 use App\User;
 use App\Country;
+use App\ApplicationAttachment;
 use App\ApplicationLog;
 use Mail;
 use App\Mail\ApplicationSent;
@@ -57,21 +58,22 @@ class ApplicationController extends Controller
         $request->flash();
         $validator = Validator::make(
             $request->all(),
-            ['resume_applicant' => 'mimes:pdf,docx,doc|required|max:20000',]
+            ['resume_applicant.*' => 'mimes:pdf,docx,doc,jpg,jpeg,png|required|max:20000',]
         );
 
          // If validation fails, seek for specific error
          if ($validator->fails()) {
             $error = 'Error: <br>';
-            //If RESUME not uploaded
+            //If no RESUME uploaded
             if($request->file('resume_applicant') === null){
                 $error =  $error.'Please upload your resume.<br>';
             }
-
-            //If resume uploaded in wrong format
-            if($request->hasFile('resume_applicant') == true){
-                if(strpos($request->file('resume_applicant')->getMimeType(), 'pdf') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'doc') !==  0 ){
-                    $error = $error.'Your uploaded file is not in the correct format.';
+            else{
+                // Loop through each uploaded file and check if it's in the correct format
+                foreach($request->file('resume_applicant') as $file) {
+                    if(strpos($file->getMimeType(), 'pdf') !==  0 || strpos($file->getMimeType(), 'docx') !==  0 || strpos($file->getMimeType(), 'doc') !==  0 ){
+                        $error = $error.'Your uploaded file is not in the correct format.<br>';
+                    }
                 }
             }
             return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error);
@@ -116,15 +118,31 @@ class ApplicationController extends Controller
             if (strpos($key, 'resume_') === 0) {
                 //Upload resume
                 if ($request->hasFile('resume_applicant')) {
-                    $resume_app = $request->file('resume_applicant');
-                    $uploaded_file = $resume_app->store('public');
-                    //Pecahkan
-                    $paths = explode('/', $uploaded_file);
-                    $filename = $paths[1];
-                    //dd($filename);
-                    //Save filename into Database
-                    $appMeta->meta_key = $key;
-                    $appMeta->meta_value = $filename;
+                    foreach ($request->file('resume_applicant') as $file) {
+            
+                        $filename = $file->getClientOriginalName();
+                        $uploaded_file = $file->store('public');
+                        //Pecahkan
+                        $paths = explode('/', $uploaded_file);
+                        $filepath = $paths[1];
+                        //dd($filename);
+                        //Save filename into Database
+                        $attachment = new ApplicationAttachment;
+                        $attachment->application_id = $app->id;
+                        $attachment->file_name = $filename;
+                        $attachment->file_path = $filepath;
+                        $attachment->save();
+                    }
+                    continue;
+                    // $resume_app = $request->file('resume_applicant');
+                    // $uploaded_file = $resume_app->store('public');
+                    // //Pecahkan
+                    // $paths = explode('/', $uploaded_file);
+                    // $filename = $paths[1];
+                    // //dd($filename);
+                    // //Save filename into Database
+                    // $appMeta->meta_key = $key;
+                    // $appMeta->meta_value = $filename;
                 }
             }
             // else if(strpos($key, 'applicationmeta-trixFields') === 0){
@@ -236,7 +254,7 @@ class ApplicationController extends Controller
         $request->flash();
         $validator = Validator::make(
             $request->all(),
-            ['resume_applicant' => 'mimes:pdf,docx,doc|required|max:20000',]
+            ['resume_applicant.*' => 'mimes:pdf,docx,doc,jpg,jpeg,png|required|max:20000',]
         );
 
          // If validation fails, seek for specific error
@@ -246,11 +264,12 @@ class ApplicationController extends Controller
             if($request->file('resume_applicant') === null){
                 $error =  $error.'Please upload your resume.<br>';
             }
-
-            //If GAMBAR PEMOHON uploaded in wrong format
-            if($request->hasFile('resume_applicant') == true){
-                if(strpos($request->file('resume_applicant')->getMimeType(), 'pdf') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'docx') !==  0 || strpos($request->file('resume_applicant')->getMimeType(), 'doc') !==  0 ){
-                    $error = $error.'Your uploaded file is not in the correct format.';
+            else{
+                // Loop through each uploaded file and check if it's in the correct format
+                foreach($request->file('resume_applicant') as $file) {
+                    if(strpos($file->getMimeType(), 'pdf') !==  0 || strpos($file->getMimeType(), 'docx') !==  0 || strpos($file->getMimeType(), 'doc') !==  0 ){
+                        $error = $error.'Your uploaded file is not in the correct format.<br>';
+                    }
                 }
             }
             return redirect()->route('e-form', ['apl_no' => $request->get('apl_no')])->with('error', $error);
@@ -273,15 +292,31 @@ class ApplicationController extends Controller
             if (strpos($key, 'resume_') === 0) {
                 //Upload Gambar Pemohon
                 if ($request->hasFile('resume_applicant')) {
-                    $resume_app = $request->file('resume_applicant');
-                    $uploaded_file = $resume_app->store('public');
-                    //Pecahkan
-                    $paths = explode('/', $uploaded_file);
-                    $filename = $paths[1];
-                    //dd($filename);
-                    //Save filename into Database
-                    $appMeta->meta_key = $key;
-                    $appMeta->meta_value = $filename;
+                    foreach ($request->file('resume_applicant') as $file) {
+            
+                        $filename = $file->getClientOriginalName();
+                        $uploaded_file = $file->store('public');
+                        //Pecahkan
+                        $paths = explode('/', $uploaded_file);
+                        $filepath = $paths[1];
+                        //dd($filename);
+                        //Save filename into Database
+                        $attachment = new ApplicationAttachment;
+                        $attachment->application_id = $app->id;
+                        $attachment->file_name = $filename;
+                        $attachment->file_path = $filepath;
+                        $attachment->save();
+                    }
+                    continue;
+                    // $resume_app = $request->file('resume_applicant');
+                    // $uploaded_file = $resume_app->store('public');
+                    // //Pecahkan
+                    // $paths = explode('/', $uploaded_file);
+                    // $filename = $paths[1];
+                    // //dd($filename);
+                    // //Save filename into Database
+                    // $appMeta->meta_key = $key;
+                    // $appMeta->meta_value = $filename;
                 }
             }
             // else if(strpos($key, 'applicationmeta-trixFields') === 0){

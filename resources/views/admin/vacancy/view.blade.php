@@ -36,7 +36,15 @@
                             <div class="form-group col-md-6">
                                 <label for="job_type">Job Type</label>
                                 <div class="p-3 mb-2 bg-light rounded">
-                                    {{{ $vacancy->job_type}}}
+                                    @if($vacancy->job_type == 'full-time')
+                                        Full time
+                                    @elseif($vacancy->job_type == 'contract')
+                                        Contract
+                                    @elseif($vacancy->job_type == 'internship')
+                                        Internship
+                                    @elseif($vacancy->job_type == 'elite-program')
+                                        Elite Program
+                                    @endif
                                 </div>
                             </div>
                         </div>

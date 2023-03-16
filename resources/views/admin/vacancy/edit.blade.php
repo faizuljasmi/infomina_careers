@@ -25,6 +25,7 @@
                                     <option value = "full-time" {{ ( $vacancy->job_type == "full-time") ? 'selected' : '' }}>Full Time</option>
                                     <option value = "contract" {{ ( $vacancy->job_type == "contract") ? 'selected' : '' }}>Contract</option>
                                     <option value = "internship" {{ ( $vacancy->job_type == "internship") ? 'selected' : '' }}>Internship</option>
+                                    <option value = "elite-program" {{ ( $vacancy->job_type == "elite-program") ? 'selected' : '' }}>Elite Program</option>
                                   </select>
                               </div>
                             </div>

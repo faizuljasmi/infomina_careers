@@ -25,6 +25,7 @@
                                     <option value = "full-time">Full Time</option>
                                     <option value = "contract">Contract</option>
                                     <option value = "internship">Internship</option>
+                                    <option value = "elite-program">Elite Program</option>
                                   </select>
                               </div>
                             </div>

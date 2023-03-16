@@ -54,7 +54,16 @@
                                                         <tr>
                                                             <td>{{$vc->job_title}}</td>
                                                             <td>{{$vc->location}}</td>
-                                                            <td>{{$vc->job_type}}</td>
+                                                            <td>@if($vc->job_type == 'full-time')
+                                                                    Full time
+                                                                @elseif($vc->job_type == 'contract')
+                                                                    Contract
+                                                                @elseif($vc->job_type == 'internship')
+                                                                    Internship
+                                                                @elseif($vc->job_type == 'elite-program')
+                                                                    Elite Program
+                                                                @endif
+                                                            </td>
                                                             <td>{{$vc->created_at->diffForHumans()}}</td>
                                                             <td><a href="{{ route('view-vacancy', $vc) }}"><button
                                                                         type="button"

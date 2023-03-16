@@ -563,11 +563,19 @@
                         <div class="row">
                         <div class="col-md-6">
                             <label class="float-left" for="resume_applicant">Uploaded
-                                Resume</label>
+                                Attachment(s)</label>
+                            @if($apl->created_at > Carbon\Carbon::parse('15-03-2023'))
+                                @foreach ($apl->attachments as $att)
+                                <div class="input-group">
+                                    <a href="{{$att->attachment_url}}" target="_blank">{{$att->file_name}}</a>
+                                </div>
+                                @endforeach
+                            @else
                             <div class="input-group">
                                 <a href="{{$apl->resume_url}}" target="_blank">View
                                     Attachment</a>
                             </div>
+                            @endif
                         </div>
                         <div class="form-group col-md-6">
                             <label class="float-left" for="applicant_linkedin">LinkedIn
