@@ -71,7 +71,8 @@ class ApplicationController extends Controller
             else{
                 // Loop through each uploaded file and check if it's in the correct format
                 foreach($request->file('resume_applicant') as $file) {
-                    if(strpos($file->getMimeType(), 'pdf') !==  0 || strpos($file->getMimeType(), 'docx') !==  0 || strpos($file->getMimeType(), 'doc') !==  0 ){
+                    if(strpos($file->getMimeType(), 'pdf') !==  0 || strpos($file->getMimeType(), 'docx') !==  0 || strpos($file->getMimeType(), 'doc') !==  0 ||
+                       strpos($file->getMimeType(), 'jpg') !==  0 || strpos($file->getMimeType(), 'jpeg') !==  0 || strpos($file->getMimeType(), 'png') !==  0 ){
                         $error = $error.'Your uploaded file is not in the correct format.<br>';
                     }
                 }
@@ -267,7 +268,8 @@ class ApplicationController extends Controller
             else{
                 // Loop through each uploaded file and check if it's in the correct format
                 foreach($request->file('resume_applicant') as $file) {
-                    if(strpos($file->getMimeType(), 'pdf') !==  0 || strpos($file->getMimeType(), 'docx') !==  0 || strpos($file->getMimeType(), 'doc') !==  0 ){
+                    if(strpos($file->getMimeType(), 'pdf') !==  0 || strpos($file->getMimeType(), 'docx') !==  0 || strpos($file->getMimeType(), 'doc') !==  0 ||
+                       strpos($file->getMimeType(), 'jpg') !==  0 || strpos($file->getMimeType(), 'jpeg') !==  0 || strpos($file->getMimeType(), 'png') !==  0){
                         $error = $error.'Your uploaded file is not in the correct format.<br>';
                     }
                 }
