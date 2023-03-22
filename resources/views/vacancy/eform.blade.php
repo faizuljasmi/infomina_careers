@@ -88,7 +88,7 @@
                                                             <input type="text" oninput="this.value = this.value.replace(/[^0-9a-zA-Z-\s]/g, '')" class="form-control" id="applicant_ic" name="applicant_ic" placeholder="ID No." required>
 
                                                             <div class="invalid-feedback">
-                                                                Your forgot your ID number
+                                                                You forgot your ID number
                                                             </div>
                                                             <div class="valid-feedback">
                                                                 Looks good...
