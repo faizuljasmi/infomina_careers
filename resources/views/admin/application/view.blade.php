@@ -569,10 +569,12 @@
                         <div class="col-md-6">
                         <label class="float-left" for="resume_applicant">Uploaded
                                 Attachment(s)</label>
-                            @if($apl->created_at > Carbon\Carbon::parse('15-03-2023'))
+                            @if($apl->created_at > Carbon\Carbon::parse('21-03-2023'))
                                 @foreach ($apl->attachments as $att)
                                 <div class="input-group">
-                                    <a href="{{$att->attachment_url}}" target="_blank">{{$att->file_name}}</a>
+                                <a href="{{$att->attachment_url}}" target="_blank">
+                                    {{ (strlen($att->file_name) > 50) ? substr($att->file_name, 0, 50).'...' : $att->file_name }}
+                                </a>
                                 </div>
                                 @endforeach
                             @else
@@ -1004,6 +1006,7 @@
     </div>
 </div>
 @endsection
+
 
 @push('scripts')
 <script>

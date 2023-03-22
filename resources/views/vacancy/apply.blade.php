@@ -391,15 +391,31 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             @if ($vacancy->job_type == 'elite-program')
-                                                            <label class="float-left" for="resume_applicant">Upload
+                                                            <div class="control-group" id="attachments">
+                                                                <label class="control-label" for="attachment1">
+                                                                    Upload Attachment(s)
+                                                                </label>
+                                                                <div class="controls col-md-18">
+                                                                    <div class="entry input-group upload-input-group">
+                                                                        <input class="form-control" name="resume_applicant[]" type="file" class="form-control" data-show-upload="true" data-show-caption="true" required>
+                                                                        <button class="btn btn-upload btn-success btn-add" type="button" data-toggle="tooltip" data-placement="top" title="Add another attachment">
+                                                                            <i class="fa fa-plus"></i>
+
+                                                                        </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- <label class="float-left" for="resume_applicant">Upload
                                                                 Attachment(s) (supported format: pdg, doc, docx, jpeg, jpg, png)<br> Make sure to select all related documents, and upload it one go</label>
                                                                 <input type="file" name="resume_applicant[]" class="form-control" data-show-upload="true" data-show-caption="true" required multiple>
+                                                                
                                                             <div class="invalid-feedback">
                                                                 Please upload your attachment(s)
-                                                            </div>
+                                                            </div> -->
                                                             @else
                                                             <label class="float-left" for="resume_applicant">Upload Resume (supported format: pdf, doc, docx)</label>
-                                                                <input type="file" name="resume_applicant[]" class="form-control" data-show-upload="true" data-show-caption="true" required multiple>
+                                                                <input type="file" name="resume_applicant[]" class="form-control" data-show-upload="true" data-show-caption="true" required>
                                                             <div class="invalid-feedback">
                                                                 Please upload your resume
                                                             </div>
@@ -575,6 +591,22 @@
   margin: 0 auto;
   background-color: white;
 }
+
+// File Uploader Starts here
+.card {
+  margin-top: 100px;
+}
+.btn-upload {
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+.upload-input-group {
+    margin-bottom: 10px;
+}
+
+.input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
+  height: 45px;
+}
 </style>
 @endsection
 
@@ -587,6 +619,27 @@
   trigger: 'focus'
 })
     });
+
+    $(function () {
+            $(document).on('click', '.btn-add', function (e) {
+                e.preventDefault();
+
+                var controlForm = $('.controls:first'),
+                    currentEntry = $(this).parents('.entry:first'),
+                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                newEntry.find('input').val('');
+                controlForm.find('.entry:not(:last) .btn-add')
+                    .removeClass('btn-add').addClass('btn-remove')
+                    .removeClass('btn-success').addClass('btn-danger')
+                    .html('<span class="fa fa-trash"></span>');
+            }).on('click', '.btn-remove', function (e) {
+                $(this).parents('.entry:first').remove();
+
+                e.preventDefault();
+                return false;
+            });
+        });
 
     function checkGender() {
         var x = document.getElementById("applicant_gender").value;
