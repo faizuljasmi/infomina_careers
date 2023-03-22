@@ -393,7 +393,7 @@
                                                             @if ($vacancy->job_type == 'elite-program')
                                                             <div class="control-group" id="attachments">
                                                                 <label class="control-label" for="attachment1">
-                                                                    Upload Attachment(s)
+                                                                Upload Attachment(s) (supported format: pdg, doc, docx, jpeg, jpg, png)
                                                                 </label>
                                                                 <div class="controls col-md-18">
                                                                     <div class="entry input-group upload-input-group">
@@ -403,16 +403,16 @@
 
                                                                         </button>
                                                                     </div>
-
                                                                 </div>
+                                                                <div class="invalid-feedback">
+                                                                Please upload your attachment(s)
+                                                            </div>
                                                             </div>
                                                             <!-- <label class="float-left" for="resume_applicant">Upload
                                                                 Attachment(s) (supported format: pdg, doc, docx, jpeg, jpg, png)<br> Make sure to select all related documents, and upload it one go</label>
                                                                 <input type="file" name="resume_applicant[]" class="form-control" data-show-upload="true" data-show-caption="true" required multiple>
                                                                 
-                                                            <div class="invalid-feedback">
-                                                                Please upload your attachment(s)
-                                                            </div> -->
+                                                             -->
                                                             @else
                                                             <label class="float-left" for="resume_applicant">Upload Resume (supported format: pdf, doc, docx)</label>
                                                                 <input type="file" name="resume_applicant[]" class="form-control" data-show-upload="true" data-show-caption="true" required>
@@ -592,7 +592,7 @@
   background-color: white;
 }
 
-// File Uploader Starts here
+/* // File Uploader Starts here */
 .card {
   margin-top: 100px;
 }
