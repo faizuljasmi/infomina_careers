@@ -47,7 +47,7 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label class="float-left" for="applicant_name">Name</label>
-                                                            <input type="text" class="form-control" id="applicant_name" name="applicant_name" placeholder="Full Name" required>
+                                                            <input type="text" class="form-control" id="applicant_name" name="applicant_name" placeholder="Full Name" value="{{ old('applicant_name') }}" required>
                                                             <div class="invalid-feedback">
                                                                 Fill in your name, or else we'll call you Bot#217 :)
                                                             </div>
@@ -60,7 +60,7 @@
                                                             <select class="form-control" id="applicant_nationality" name="applicant_nationality" required>
                                                                 <option value="">Choose one</option>
                                                                 @foreach($countries as $country)
-                                                                  <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                                                  <option value="{{ $country->name }}" {{ old('applicant_nationality') === $country->name ? 'selected' : '' }} >{{ $country->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div class="invalid-feedback">
@@ -76,7 +76,7 @@
                                                                                                                                                                                                                         National ID No. (TH): 5 0499 40598 45 0 <br>
                                                                                                                                                                                                                         National ID No. (PH): 1234-5678-9101-1213
                                                                                                                                                                                                                          " data-html="true" data-trigger="focus"></a></label>
-                                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9a-zA-Z-\s]/g, '')" class="form-control" id="applicant_ic" name="applicant_ic" placeholder="ID No." required>
+                                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9a-zA-Z-\s]/g, '')" class="form-control" id="applicant_ic" name="applicant_ic" placeholder="ID No." value="{{ old('applicant_ic') }}" required>
 
                                                             <div class="invalid-feedback">
                                                                 You forgot your ID number
@@ -87,10 +87,10 @@
                                                         </div>
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_gender">Gender</label>
-                                                            <select class="form-control" id="applicant_gender" name="applicant_gender" onchange="checkGender()" required>
-                                                                <option value="">Choose One</option>
-                                                                <option value="Male">Male</option>
-                                                                <option value="Female">Female</option>
+                                                            <select class="form-control" id="applicant_gender" name="applicant_gender" onchange="checkGender()" value="{{ old('applicant_gender') }}" required>
+                                                                <option value="" {{ old('applicant_gender') === "" ? 'selected' : '' }}>Choose One</option>
+                                                                <option value="Male" {{ old('applicant_gender') === "Male" ? 'selected' : '' }}>Male</option>
+                                                                <option value="Female" {{ old('applicant_gender') === "Female" ? 'selected' : '' }}>Female</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please select a gender
@@ -104,7 +104,7 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-4">
                                                             <label class="float-left" for="applicant_email">Email</label>
-                                                            <input type="email" class="form-control" id="applicant_email" name="applicant_email" placeholder="Email" required>
+                                                            <input type="email" class="form-control" id="applicant_email" name="applicant_email" placeholder="Email" value="{{ old('applicant_email') }}" required>
                                                             <div class="invalid-feedback">
                                                                 It's important that we get your email
                                                             </div>
@@ -116,7 +116,7 @@
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_tel_mobile">Tel No.
                                                                 (Mobile)</label>
-                                                            <input type="text" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_tel_mobile" name="applicant_tel_mobile" required>
+                                                            <input type="text" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_tel_mobile" name="applicant_tel_mobile" value="{{ old('applicant_tel_mobile') }}" required>
                                                             <div class="invalid-feedback">
                                                                 Please fill in your phone number
                                                             </div>
@@ -127,22 +127,22 @@
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_tel_office">Tel No.
                                                                 (Office)</label>
-                                                            <input type="text" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_tel_office" name="applicant_tel_office">
+                                                            <input type="text" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_tel_office" name="applicant_tel_office" value="{{ old('applicant_tel_office') }}">
                                                             
                                                         </div>
 
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_dob">Date of Birth</label>
-                                                                <input type="date" class="form-control" id="applicant_dob" name="applicant_dob" required>
+                                                                <input type="date" class="form-control" id="applicant_dob" name="applicant_dob" value="{{ old('applicant_dob') }}" required>
                                                         </div>
                                                         
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_marital_stat">Marital
                                                                 Status</label>
-                                                            <select class="form-control" id="applicant_marital_stat" name="applicant_marital_stat" onchange="checkGender()" required>
-                                                                <option value="">Choose one</option>
-                                                                <option value="Single">Single</option>
-                                                                <option value="Married">Married</option>
+                                                            <select class="form-control" id="applicant_marital_stat" name="applicant_marital_stat" onchange="checkGender()" value="{{ old('applicant_marital_stat') }}" required>
+                                                                <option value="" {{ old('applicant_marital_stat') === "" ? 'selected' : '' }}>Choose one</option>
+                                                                <option value="Single" {{ old('applicant_marital_stat') === "Single" ? 'selected' : '' }}>Single</option>
+                                                                <option value="Married" {{ old('applicant_marital_stat') === "Married" ? 'selected' : '' }}>Married</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -155,7 +155,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-md-12">
                                                             <label class="float-left" for="applicant_address">Address</label>
-                                                            <input type="text" class="form-control" id="applicant_address" name="applicant_address" required></input>
+                                                            <input type="text" class="form-control" id="applicant_address" name="applicant_address" value="{{ old('applicant_address') }}" required></input>
                                                             <div class="invalid-feedback">
                                                                 Please fill in your address
                                                             </div>
@@ -167,7 +167,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-md-4">
                                                             <label class="float-left" for="applicant_address">City</label>
-                                                            <input type="text" class="form-control" id="applicant_city" name="applicant_city" required></input>
+                                                            <input type="text" class="form-control" id="applicant_city" name="applicant_city" value="{{ old('applicant_city') }}" required></input>
                                                             <div class="invalid-feedback">
                                                                 Please fill in your city
                                                             </div>
@@ -177,7 +177,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label class="float-left" for="applicant_state">State</label>
-                                                            <input type="text" class="form-control" id="applicant_state" name="applicant_state" required></input>
+                                                            <input type="text" class="form-control" id="applicant_state" name="applicant_state" value="{{ old('applicant_state') }}" required></input>
                                                             <div class="invalid-feedback">
                                                                 Please fill in your state of residential
                                                             </div>
@@ -187,7 +187,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label class="float-left" for="applicant_postcode">Postcode</label>
-                                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_postcode" name="applicant_postcode" required></input>
+                                                            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="applicant_postcode" name="applicant_postcode" value="{{ old('applicant_postcode') }}" required></input>
                                                             <div class="invalid-feedback">
                                                                 Please fill in your postcode
                                                             </div>
@@ -204,14 +204,14 @@
                                                             <p class="text-center">Have you suffered from or are you
                                                                 currently suffering from any serious illness? ( If yes,
                                                                 please state exact details )</p>
-                                                            <textarea class="form-control" id="applicant_serious_health_cond" name="applicant_serious_health_cond" rows="3" placeholder="State your health condition (if any) and details here"></textarea>
+                                                            <textarea class="form-control" id="applicant_serious_health_cond" name="applicant_serious_health_cond" rows="3" placeholder="State your health condition (if any) and details here">{{ old('applicant_serious_health_cond') }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="form-group col-md-12" id="is_pregnant">
                                                             <p class="float-left mr-2">Are you pregnant now?</p>
-                                                            <select class="form-control" id="applicant_pregnant" name="applicant_pregnant" required>
-                                                                <option>Yes</option>
+                                                            <select class="form-control" id="applicant_pregnant" name="applicant_pregnant" value="{{ old('applicant_pregnant') }}" required>
+                                                                <option {{ old('applicant_pregnant') === "Yes" ? 'selected' : '' }}>Yes</option>
                                                                 <option selected>No</option>
                                                             </select>
                                                         </div>
@@ -232,18 +232,18 @@
                                                                 Referee 1
                                                             </h6>
                                                             <label class="float-left mt-2" for="applicant_referee_1_name">Name</label>
-                                                            <input type="text" class="form-control" id="applicant_referee_1_name" name="applicant_referee_1_name" placeholder="Full Name" required>
+                                                            <input type="text" class="form-control" id="applicant_referee_1_name" name="applicant_referee_1_name" placeholder="Full Name" value="{{ old('applicant_referee_1_name') }}" required>
                                                             <label class="float-left mt-2" for="applicant_referee_1_mobile">Tel
                                                                 No.
                                                             </label>
-                                                            <input type="text" class="form-control" maxlength="12" id="applicant_referee_1_mobile" name="applicant_referee_1_mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="" required>
+                                                            <input type="text" class="form-control" maxlength="12" id="applicant_referee_1_mobile" name="applicant_referee_1_mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="" value="{{ old('applicant_referee_1_mobile') }}" required>
                                                             <label class="float-left mt-2" for="applicant_referee_1_occupation">Occupation
                                                             </label>
-                                                            <input type="text" class="form-control" id="applicant_referee_1_occupation" name="applicant_referee_1_occupation" placeholder="Occupation" required>
+                                                            <input type="text" class="form-control" id="applicant_referee_1_occupation" name="applicant_referee_1_occupation" placeholder="Occupation" value="{{ old('applicant_referee_1_occupation') }}" required>
                                                             <label class="float-left mt-2" for="applicant_referee_1_known">No. of
                                                                 Years Known
                                                             </label>
-                                                            <input type="text" class="form-control" id="applicant_referee_1_known" name="applicant_referee_1_known" placeholder="X Years/Months" required>
+                                                            <input type="text" class="form-control" id="applicant_referee_1_known" name="applicant_referee_1_known" placeholder="X Years/Months" value="{{ old('applicant_referee_1_known') }}" required>
                                                             <div class="invalid-feedback">
                                                                 Please complete all details
                                                             </div>
@@ -256,18 +256,18 @@
                                                                 Referee 2
                                                             </h6>
                                                             <label class="float-left mt-2" for="applicant_referee_2_name">Name</label>
-                                                            <input type="text" class="form-control" id="applicant_referee_2_name" name="applicant_referee_2_name" placeholder="Full Name" required>
+                                                            <input type="text" class="form-control" id="applicant_referee_2_name" name="applicant_referee_2_name" placeholder="Full Name" value="{{ old('applicant_referee_2_name') }}" required>
                                                             <label class="float-left mt-2" for="applicant_referee_2_mobile">Tel
                                                                 No.
                                                             </label>
-                                                            <input type="text" class="form-control" maxlength="12" id="applicant_referee_2_mobile" name="applicant_referee_2_mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="" required>
+                                                            <input type="text" class="form-control" maxlength="12" id="applicant_referee_2_mobile" name="applicant_referee_2_mobile" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="" value="{{ old('applicant_referee_2_mobile') }}" required>
                                                             <label class="float-left mt-2" for="applicant_referee_2_occupation">Occupation
                                                             </label>
-                                                            <input type="text" class="form-control" id="applicant_referee_2_occupation" name="applicant_referee_2_occupation" placeholder="Occupation" required>
+                                                            <input type="text" class="form-control" id="applicant_referee_2_occupation" name="applicant_referee_2_occupation" placeholder="Occupation" value="{{ old('applicant_referee_2_occupation') }}" required>
                                                             <label class="float-left mt-2" for="applicant_referee_2_known">No. of
                                                                 Years Known
                                                             </label>
-                                                            <input type="text" class="form-control" id="applicant_referee_2_known" name="applicant_referee_2_known" placeholder="X Years/Months" required>
+                                                            <input type="text" class="form-control" id="applicant_referee_2_known" name="applicant_referee_2_known" placeholder="X Years/Months" value="{{ old('applicant_referee_2_known') }}" required>
                                                             <div class="invalid-feedback">
                                                                 Please complete all the details
                                                             </div>
@@ -282,12 +282,12 @@
                                                         <div class="form-group col-md-6">
                                                             <label class="float-left" for="applicant_willing_travel">Willing
                                                                 to Travel</label>
-                                                            <select class="form-control" id="applicant_willing_travel" name="applicant_willing_travel" required>
-                                                                <option value="">Choose one</option>
-                                                                <option value="No">No</option>
-                                                                <option value="Light">Light</option>
-                                                                <option value="Moderate">Moderate</option>
-                                                                <option value="Heavy">Heavy</option>
+                                                            <select class="form-control" id="applicant_willing_travel" name="applicant_willing_travel" value="{{ old('applicant_willing_travel') }}" required>
+                                                                <option value="" {{ old('applicant_willing_travel') === "" ? 'selected' : '' }}>Choose one</option>
+                                                                <option value="No" {{ old('applicant_willing_travel') === "No" ? 'selected' : '' }}>No</option>
+                                                                <option value="Light" {{ old('applicant_willing_travel') === "Light" ? 'selected' : '' }}>Light</option>
+                                                                <option value="Moderate" {{ old('applicant_willing_travel') === "Moderate" ? 'selected' : '' }}>Moderate</option>
+                                                                <option value="Heavy" {{ old('applicant_willing_travel') === "Heavy" ? 'selected' : '' }}>Heavy</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -299,7 +299,7 @@
                                                         <div class="form-group col-md-3">
                                                             <label class="float-left" for="applicant_notice_period">Notice
                                                                 Period</label>
-                                                            <input type="number" class="form-control" id="applicant_notice_period" name="applicant_notice_period" placeholder="3" required>
+                                                            <input type="number" class="form-control" id="applicant_notice_period" name="applicant_notice_period" placeholder="3" value="{{ old('applicant_notice_period') }}" required>
                                                             <div class="invalid-feedback">
                                                                 Please fill in this field
                                                             </div>
@@ -309,10 +309,10 @@
                                                         </div>
                                                         <div class="form-group col-md-3">
                                                             <label class="float-left" for="applicant_notice_year_week">Week/Month</label>
-                                                            <select class="form-control" id="applicant_notice_year_week" name="applicant_notice_year_week" required>
-                                                                <option value="">Choose one</option>
-                                                                <option>Week(s)</option>
-                                                                <option>Month(s)</option>
+                                                            <select class="form-control" id="applicant_notice_year_week" name="applicant_notice_year_week" value="{{ old('applicant_notice_year_week') }}" required>
+                                                                <option value="" {{ old('applicant_notice_year_week') === "" ? 'selected' : '' }}>Choose one</option>
+                                                                <optio {{ old('applicant_notice_year_week') === "Week(s)" ? 'selected' : '' }}n>Week(s)</option>
+                                                                <option {{ old('applicant_notice_year_week') === "Month(s)" ? 'selected' : '' }}>Month(s)</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -326,17 +326,17 @@
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_cur_salary">Current
                                                                 Salary</label>
-                                                            <select class="form-control" id="applicant_cur_salary_currency" name="applicant_cur_salary_currency" required>
-                                                                <option value="">Currency</option>
-                                                                <option>MYR</option>
-                                                                <option>USD</option>
-                                                                <option>SGD</option>
-                                                                <option>PHP</option>
-                                                                <option>IDR</option>
-                                                                <option>THB</option>
-                                                                <option>VND</option>
-                                                                <option>HKD</option>
-                                                                <option>TWD</option>
+                                                            <select class="form-control" id="applicant_cur_salary_currency" name="applicant_cur_salary_currency" value="{{ old('applicant_cur_salary_currency') }}" required>
+                                                                <option value="" {{ old('applicant_cur_salary_currency') === "Heavy" ? 'selected' : '' }}>Currency</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "MYR" ? 'selected' : '' }}>MYR</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "USD" ? 'selected' : '' }}>USD</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "SGD" ? 'selected' : '' }}>SGD</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "PHP" ? 'selected' : '' }}>PHP</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "IDR" ? 'selected' : '' }}>IDR</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "THB" ? 'selected' : '' }}>THB</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "VND" ? 'selected' : '' }}>VND</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "HKD" ? 'selected' : '' }}>HKD</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "TWD" ? 'selected' : '' }}>TWD</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -347,7 +347,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label class="float-left" for="applicant_cur_salary">:</label>
-                                                            <input type="number" class="form-control" id="applicant_cur_salary" name="applicant_cur_salary" placeholder="" required>
+                                                            <input type="number" class="form-control" id="applicant_cur_salary" name="applicant_cur_salary" placeholder="" value="{{ old('applicant_cur_salary') }}" required>
                                                             <div class="invalid-feedback">
                                                                 Please state your current salary
                                                             </div>
@@ -358,17 +358,17 @@
                                                         <div class="form-group col-md-2">
                                                             <label class="float-left" for="applicant_exp_salary">Expected
                                                                 Salary</label>
-                                                            <select class="form-control" id="applicant_exp_salary_currency" name="applicant_exp_salary_currency" required>
-                                                                <option value="">Currency</option>
-                                                                <option>MYR</option>
-                                                                <option>USD</option>
-                                                                <option>SGD</option>
-                                                                <option>PHP</option>
-                                                                <option>IDR</option>
-                                                                <option>THB</option>
-                                                                <option>VND</option>
-                                                                <option>HKD</option>
-                                                                <option>TWD</option>
+                                                            <select class="form-control" id="applicant_exp_salary_currency" name="applicant_exp_salary_currency" value="{{ old('applicant_exp_salary_currency') }}" required>
+                                                            <option value="" {{ old('applicant_exp_salary_currency') === "Heavy" ? 'selected' : '' }}>Currency</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "MYR" ? 'selected' : '' }}>MYR</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "USD" ? 'selected' : '' }}>USD</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "SGD" ? 'selected' : '' }}>SGD</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "PHP" ? 'selected' : '' }}>PHP</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "IDR" ? 'selected' : '' }}>IDR</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "THB" ? 'selected' : '' }}>THB</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "VND" ? 'selected' : '' }}>VND</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "HKD" ? 'selected' : '' }}>HKD</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "TWD" ? 'selected' : '' }}>TWD</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -379,7 +379,7 @@
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                             <label class="float-left" for="applicant_exp_salary">:</label>
-                                                            <input type="number" class="form-control" id="applicant_exp_salary" name="applicant_exp_salary" placeholder="" required>
+                                                            <input type="number" class="form-control" id="applicant_exp_salary" name="applicant_exp_salary" placeholder="" value="{{ old('applicant_exp_salary') }}" required>
                                                             <div class="invalid-feedback">
                                                                 Please state your expected salary
                                                             </div>
@@ -431,7 +431,7 @@
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-text"><i class="fa fa-linkedin-square"></i></div>
                                                                 </div>
-                                                                <input type="text" class="form-control" id="applicant_linkedin" name="applicant_linkedin" placeholder="https://www.linkedin.com/in/[username]">
+                                                                <input type="text" class="form-control" id="applicant_linkedin" name="applicant_linkedin" placeholder="https://www.linkedin.com/in/[username]" value="{{ old('applicant_linkedin') }}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -452,7 +452,7 @@
                                                                 rows="3" placeholder="Write here..."></textarea> --}}
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <textarea class="form-control" id="applicant_add_info" name="applicant_add_info" rows="3" placeholder="Additional infos that are not stated in your resume/CV"></textarea>
+                                                            <textarea class="form-control" id="applicant_add_info" name="applicant_add_info" rows="3" placeholder="Additional infos that are not stated in your resume/CV">{{ old('applicant_add_info') }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -69,7 +69,7 @@
                                                             <select class="form-control" id="applicant_nationality" name="applicant_nationality" required>
                                                                 <option value="">Choose one</option>
                                                                  @foreach($countries as $country)
-                                                                  <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                                                 <option value="{{ $country->name }}" {{ old('applicant_nationality') === $country->name ? 'selected' : '' }} >{{ $country->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div class="invalid-feedback">
@@ -100,9 +100,9 @@
                                                             <select class="form-control" id="applicant_gender"
                                                                 name="applicant_gender" onchange="checkGender()"
                                                                 required>
-                                                                <option value="">Choose One</option>
-                                                                <option value="Male">Male</option>
-                                                                <option value="Female">Female</option>
+                                                                <option value="" {{ old('applicant_gender') === "" ? 'selected' : '' }}>Choose One</option>
+                                                                <option value="Male" {{ old('applicant_gender') === "Male" ? 'selected' : '' }}>Male</option>
+                                                                <option value="Female" {{ old('applicant_gender') === "Female" ? 'selected' : '' }}>Female</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please select a gender
@@ -165,9 +165,9 @@
                                                             <select class="form-control" id="applicant_marital_stat"
                                                                 name="applicant_marital_stat" onchange="checkGender()"
                                                                 required>
-                                                                <option value="">Choose one</option>
-                                                                <option value="Single">Single</option>
-                                                                <option value="Married">Married</option>
+                                                                <option value="" {{ old('applicant_marital_stat') === "" ? 'selected' : '' }}>Choose one</option>
+                                                                <option value="Single" {{ old('applicant_marital_stat') === "Single" ? 'selected' : '' }}>Single</option>
+                                                                <option value="Married" {{ old('applicant_marital_stat') === "Married" ? 'selected' : '' }}>Married</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -240,8 +240,8 @@
                                                             <p class="float-left mr-2">Are you pregnant now?</p>
                                                             <select class="form-control" id="applicant_pregnant"
                                                                 name="applicant_pregnant" required>
-                                                                <option>Yes</option>
-                                                                <option selected>No</option>
+                                                                <option {{ old('applicant_pregnant') === "Yes" ? 'selected' : '' }}>Yes</option>
+                                                                <option {{ old('applicant_pregnant') === "" || old('applicant_pregnant') === "No" ? 'selected' : '' }}>No</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -348,11 +348,11 @@
                                                                 to Travel</label>
                                                             <select class="form-control" id="applicant_willing_travel"
                                                                 name="applicant_willing_travel" required>
-                                                                <option value="">Choose one</option>
-                                                                <option value="No">No</option>
-                                                                <option value="Light">Light</option>
-                                                                <option value="Moderate">Moderate</option>
-                                                                <option value="Heavy">Heavy</option>
+                                                                <option value="" {{ old('applicant_willing_travel') === "" ? 'selected' : '' }}>Choose one</option>
+                                                                <option value="No" {{ old('applicant_willing_travel') === "No" ? 'selected' : '' }}>No</option>
+                                                                <option value="Light" {{ old('applicant_willing_travel') === "Light" ? 'selected' : '' }}>Light</option>
+                                                                <option value="Moderate" {{ old('applicant_willing_travel') === "Moderate" ? 'selected' : '' }}>Moderate</option>
+                                                                <option value="Heavy" {{ old('applicant_willing_travel') === "Heavy" ? 'selected' : '' }}>Heavy</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -380,9 +380,9 @@
                                                                 for="applicant_notice_year_week">Week/Month</label>
                                                             <select class="form-control" id="applicant_notice_year_week"
                                                                 name="applicant_notice_year_week" required>
-                                                                <option value="">Choose one</option>
-                                                                <option>Week(s)</option>
-                                                                <option>Month(s)</option>
+                                                                <option value="" {{ old('applicant_notice_year_week') === "" ? 'selected' : '' }}>Choose one</option>
+                                                                <optio {{ old('applicant_notice_year_week') === "Week(s)" ? 'selected' : '' }}n>Week(s)</option>
+                                                                <option {{ old('applicant_notice_year_week') === "Month(s)" ? 'selected' : '' }}>Month(s)</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -398,16 +398,16 @@
                                                                 Salary</label>
                                                             <select class="form-control"  id="applicant_cur_salary_currency"
                                                             name="applicant_cur_salary_currency" required>
-                                                                <option value="">Currency</option>
-                                                                <option >MYR</option>
-                                                                <option >USD</option>
-                                                                <option >SGD</option>
-                                                                <option >PHP</option>
-                                                                <option >IDR</option>
-                                                                <option >THB</option>
-                                                                <option >VND</option>
-                                                                <option >HKD</option>
-                                                                <option >TWD</option>
+                                                            <option value="" {{ old('applicant_cur_salary_currency') === "Heavy" ? 'selected' : '' }}>Currency</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "MYR" ? 'selected' : '' }}>MYR</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "USD" ? 'selected' : '' }}>USD</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "SGD" ? 'selected' : '' }}>SGD</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "PHP" ? 'selected' : '' }}>PHP</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "IDR" ? 'selected' : '' }}>IDR</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "THB" ? 'selected' : '' }}>THB</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "VND" ? 'selected' : '' }}>VND</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "HKD" ? 'selected' : '' }}>HKD</option>
+                                                                <option {{ old('applicant_cur_salary_currency') === "TWD" ? 'selected' : '' }}>TWD</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one
@@ -433,16 +433,16 @@
                                                                 Salary</label>
                                                             <select class="form-control" id="applicant_exp_salary_currency"
                                                             name="applicant_exp_salary_currency" required>
-                                                                <option value="">Currency</option>
-                                                                <option >MYR</option>
-                                                                <option >USD</option>
-                                                                <option >SGD</option>
-                                                                <option >PHP</option>
-                                                                <option >IDR</option>
-                                                                <option >THB</option>
-                                                                <option >VND</option>
-                                                                <option >HKD</option>
-                                                                <option >TWD</option>
+                                                            <option value="" {{ old('applicant_exp_salary_currency') === "Heavy" ? 'selected' : '' }}>Currency</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "MYR" ? 'selected' : '' }}>MYR</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "USD" ? 'selected' : '' }}>USD</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "SGD" ? 'selected' : '' }}>SGD</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "PHP" ? 'selected' : '' }}>PHP</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "IDR" ? 'selected' : '' }}>IDR</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "THB" ? 'selected' : '' }}>THB</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "VND" ? 'selected' : '' }}>VND</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "HKD" ? 'selected' : '' }}>HKD</option>
+                                                                <option {{ old('applicant_exp_salary_currency') === "TWD" ? 'selected' : '' }}>TWD</option>
                                                             </select>
                                                             <div class="invalid-feedback">
                                                                 Please choose one

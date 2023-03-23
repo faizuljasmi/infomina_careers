@@ -77,7 +77,7 @@ class ApplicationController extends Controller
                     }
                 }
             }
-            return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error);
+            return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error)->withInput();
         }
 
         $inputs = $request->all();
@@ -274,7 +274,7 @@ class ApplicationController extends Controller
                     }
                 }
             }
-            return redirect()->route('e-form', ['apl_no' => $request->get('apl_no')])->with('error', $error);
+            return redirect()->route('e-form', ['apl_no' => $request->get('apl_no')])->with('error', $error)->withInput();
         }
 
         $inputs = $request->all();
