@@ -381,7 +381,7 @@
                                                             <select class="form-control" id="applicant_notice_year_week"
                                                                 name="applicant_notice_year_week" required>
                                                                 <option value="" {{ old('applicant_notice_year_week') === "" ? 'selected' : '' }}>Choose one</option>
-                                                                <optio {{ old('applicant_notice_year_week') === "Week(s)" ? 'selected' : '' }}n>Week(s)</option>
+                                                                <option {{ old('applicant_notice_year_week') === "Week(s)" ? 'selected' : '' }}>Week(s)</option>
                                                                 <option {{ old('applicant_notice_year_week') === "Month(s)" ? 'selected' : '' }}>Month(s)</option>
                                                             </select>
                                                             <div class="invalid-feedback">

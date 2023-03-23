@@ -212,7 +212,7 @@
                                                             <p class="float-left mr-2">Are you pregnant now?</p>
                                                             <select class="form-control" id="applicant_pregnant" name="applicant_pregnant" value="{{ old('applicant_pregnant') }}" required>
                                                                 <option {{ old('applicant_pregnant') === "Yes" ? 'selected' : '' }}>Yes</option>
-                                                                <option selected>No</option>
+                                                                <option {{ old('applicant_pregnant') === "" || old('applicant_pregnant') === "No" ? 'selected' : '' }}>No</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -311,7 +311,7 @@
                                                             <label class="float-left" for="applicant_notice_year_week">Week/Month</label>
                                                             <select class="form-control" id="applicant_notice_year_week" name="applicant_notice_year_week" value="{{ old('applicant_notice_year_week') }}" required>
                                                                 <option value="" {{ old('applicant_notice_year_week') === "" ? 'selected' : '' }}>Choose one</option>
-                                                                <optio {{ old('applicant_notice_year_week') === "Week(s)" ? 'selected' : '' }}n>Week(s)</option>
+                                                                <option {{ old('applicant_notice_year_week') === "Week(s)" ? 'selected' : '' }}>Week(s)</option>
                                                                 <option {{ old('applicant_notice_year_week') === "Month(s)" ? 'selected' : '' }}>Month(s)</option>
                                                             </select>
                                                             <div class="invalid-feedback">
