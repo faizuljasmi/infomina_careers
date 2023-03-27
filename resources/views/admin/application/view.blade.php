@@ -569,7 +569,7 @@
                         <div class="col-md-6">
                         <label class="float-left" for="resume_applicant">Uploaded
                                 Attachment(s)</label>
-                            @if($apl->created_at > Carbon\Carbon::parse('21-03-2023'))
+                            @if($apl->created_at > Carbon\Carbon::parse('27-03-2023'))
                                 @foreach ($apl->attachments as $att)
                                 <div class="input-group">
                                 <a href="{{$att->attachment_url}}" target="_blank">
