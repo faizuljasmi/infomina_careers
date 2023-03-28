@@ -68,7 +68,7 @@ class VacancyController extends Controller
         $vac_log->save();
 
         // return view('admin.vacancy.view')->with(compact('vacancy','user'));
-        return redirect()->route('admin-view-vacancy', ['vacancy' => $vacancy]);
+        return redirect()->route('admin-view-vacancy', ['vacancy' => $vacancy])->with(compact('user'));
     }
 
     /**
