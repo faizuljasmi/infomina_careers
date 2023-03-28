@@ -28,11 +28,17 @@
                                                               </tr>
                                                               <tr>
                                                                 <th>Job Description</th>
-                                                              <td> {!! $vacancy->job_desc !!}</td>
+                                                              <td> 
+                                                                <div class="trix-content">
+                                                                {!! $vacancy->job_desc !!}
+                                                                </div>
+                                                              </td>
                                                               </tr>
                                                               <tr>
                                                                 <th>Requirements</th>
-                                                              <td> {!! $vacancy->job_req !!}</td>
+                                                              <td> <div class="trix-content">
+                                                                {!! $vacancy->job_req !!}
+                                                                </div></td>
                                                               </tr>
                                                               <tr>
                                                                 <th>Location</th>
