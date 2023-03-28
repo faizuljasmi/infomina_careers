@@ -32,12 +32,16 @@
                             <div class="form-group">
                               <label for="job_desc">Job Description</label>
                             {{-- <textarea class="form-control" name="job_desc" id="job_desc" rows="3" >{{$vacancy->job_desc}}</textarea> --}}
-                            @trix($vacancy, 'job_desc')
+                            <!-- @trix($vacancy, 'job_desc') -->
+                            <input id="job_desc" type="hidden" name="job_desc" value="{{ $vacancy->job_desc ?? "" }}" >
+                            <trix-editor input="job_desc" placeholder="Job Description"></trix-editor>
                             </div>
                             <div class="form-group">
                               <label for="job_req">Job Requirement</label>
                               {{-- <textarea class="form-control" name="job_req" id="job_req" rows="50" >{{$vacancy->job_req}}</textarea> --}}
-                              @trix($vacancy, 'job_req')
+                              <!-- @trix($vacancy, 'job_req') -->
+                              <input id="job_req" type="hidden" name="job_req" value="{{ $vacancy->job_req ?? "" }}" >
+                            <trix-editor input="job_req" placeholder="Job Requirement"></trix-editor>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">

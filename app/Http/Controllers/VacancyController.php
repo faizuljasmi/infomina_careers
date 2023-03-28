@@ -49,14 +49,15 @@ class VacancyController extends Controller
     public function update_admin(Request $request, Vacancy $vacancy){
 
         $content = request('vacancy-trixFields');
+        //dd($request->all());
 
         $user = auth()->user();
         $vacancy->job_title = $request->job_title;
         $vacancy->job_type = $request->job_type;
-        $vacancy->job_desc = $content['job_desc'];
-        $vacancy->job_req = $content['job_req'];
+        $vacancy->job_desc = $request->job_desc;
+        $vacancy->job_req = $request->job_req;
         $vacancy->location = $request->location;
-        $vacancy->update(['vacancy-trixFields' => request('vacancy-trixFields')]);
+        //$vacancy->update(['vacancy-trixFields' => request('vacancy-trixFields')]);
         $vacancy->update();
         //dd($vacancy->job_desc);
 
@@ -66,7 +67,8 @@ class VacancyController extends Controller
         $vac_log->action = "edited";
         $vac_log->save();
 
-        return view('admin.vacancy.view')->with(compact('vacancy','user'));
+        // return view('admin.vacancy.view')->with(compact('vacancy','user'));
+        return redirect()->route('admin-view-vacancy', ['vacancy' => $vacancy]);
     }
 
     /**
