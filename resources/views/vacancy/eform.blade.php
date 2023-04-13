@@ -466,7 +466,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                        @if ($vacancy->job_type == 'elite-program')
+                                                        @if ($app->vacancy->job_type == 'elite-program')
                                                             <div class="control-group" id="attachments">
                                                                 <label class="control-label" for="attachment1">
                                                                 Upload Attachment(s) (supported format: pdg, doc, docx, jpeg, jpg, png)
