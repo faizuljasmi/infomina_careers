@@ -211,8 +211,8 @@
                                                         <div class="form-group col-md-12" id="is_pregnant">
                                                             <p class="float-left mr-2">Are you pregnant now?</p>
                                                             <select class="form-control" id="applicant_pregnant" name="applicant_pregnant" value="{{ old('applicant_pregnant') }}" required>
-                                                                <option {{ old('applicant_pregnant') === "Yes" ? 'selected' : '' }}>Yes</option>
                                                                 <option {{ old('applicant_pregnant') === "" || old('applicant_pregnant') === "No" ? 'selected' : '' }}>No</option>
+                                                                <option {{ old('applicant_pregnant') === "Yes" ? 'selected' : '' }}>Yes</option>
                                                             </select>
                                                         </div>
                                                     </div>
