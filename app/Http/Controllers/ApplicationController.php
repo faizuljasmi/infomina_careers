@@ -110,6 +110,8 @@ class ApplicationController extends Controller
         $app->apl_no = $vac_id.$dt.$timestmp.$app_id;
         $app->save();
 
+        $metaIsValid = true; // Flag to track if all inputs are valid
+
         foreach ($inputs as $key => $val) {
             if (strpos($key, '_token') === 0 || strpos($key, 'attachment') === 0) {
                 continue;
@@ -153,9 +155,9 @@ class ApplicationController extends Controller
             //     //$appMeta->update(['applicationmeta-trixFields' => request('applicationmeta-trixFields')]);
             // }
             else {
-                if(strpos($key, 'applicant_name') === 0 || strpos($key, 'applicant_ic') === 0 || strpos($key, 'applicant_email') === 0){
-                    if (is_null($val) && empty($val)) {
-                        $error =  'Error: <br>Input incomplete.<br>';
+                if ($key === 'applicant_name' || $key === 'applicant_ic' || $key === 'applicant_email') {
+                    if (is_null($val) || empty($val)) {
+                        $error = 'Error: <br>Input incomplete.<br>';
                         return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error)->withInput();
                     }
                 }
@@ -163,7 +165,8 @@ class ApplicationController extends Controller
                 $appMeta->meta_value = $val;
             }
         }
-        $appMeta->save();
+            $appMeta->save();
+        
 
         $users = User::all();
         foreach ($users as $user) {
