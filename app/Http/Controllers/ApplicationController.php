@@ -154,7 +154,12 @@ class ApplicationController extends Controller
             // }
             else {
                 $appMeta->meta_key = $key;
-                $appMeta->meta_value = $val;
+                if (!is_null($val) && !empty($val)) {
+                    $appMeta->meta_value = $val;
+                } else {
+                    $error =  $error.'Input incomplete.<br>';
+                    return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error)->withInput();
+                }
             }
             $appMeta->save();
         }
