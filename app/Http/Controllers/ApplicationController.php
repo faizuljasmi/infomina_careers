@@ -153,13 +153,14 @@ class ApplicationController extends Controller
             //     //$appMeta->update(['applicationmeta-trixFields' => request('applicationmeta-trixFields')]);
             // }
             else {
-                $appMeta->meta_key = $key;
-                if (!is_null($val) && !empty($val)) {
-                    $appMeta->meta_value = $val;
-                } else {
-                    $error =  'Error: <br>Input incomplete.<br>';
-                    return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error)->withInput();
+                if(strpos($key, 'applicant_name') === 0 || strpos($key, 'applicant_ic') === 0 || strpos($key, 'applicant_email') === 0){
+                    if (is_null($val) && empty($val)) {
+                        $error =  'Error: <br>Input incomplete.<br>';
+                        return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error)->withInput();
+                    }
                 }
+                $appMeta->meta_key = $key;
+                $appMeta->meta_value = $val;
             }
         }
         $appMeta->save();
