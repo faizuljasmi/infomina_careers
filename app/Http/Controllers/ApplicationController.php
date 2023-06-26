@@ -110,7 +110,8 @@ class ApplicationController extends Controller
         $app->apl_no = $vac_id.$dt.$timestmp.$app_id;
         $app->save();
 
-        $metaIsValid = true; // Flag to track if all inputs are valid
+        $isValid = true; // Flag variable to track validation status
+        $appMetas = []; // Array to store appMeta instances
 
         foreach ($inputs as $key => $val) {
             if (strpos($key, '_token') === 0 || strpos($key, 'attachment') === 0) {
@@ -157,15 +158,22 @@ class ApplicationController extends Controller
             else {
                 if ($key === 'applicant_name' || $key === 'applicant_ic' || $key === 'applicant_email') {
                     if (is_null($val) || empty($val)) {
-                        $error = 'Error: <br>Input incomplete.<br>';
+                        $isValid = false; // Set the flag to false
+                        $error =  'Error: <br>Input incomplete.<br>';
+                        $app->delete();
                         return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error)->withInput();
                     }
                 }
                 $appMeta->meta_key = $key;
                 $appMeta->meta_value = $val;
+                $appMetas[] = $appMeta; // Store the appMeta instance in the array
             }
         }
-            $appMeta->save();
+        if ($isValid) {
+            foreach ($appMetas as $appMeta) {
+                $appMeta->save();
+            }
+        }
         
 
         $users = User::all();
