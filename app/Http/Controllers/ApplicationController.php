@@ -157,7 +157,7 @@ class ApplicationController extends Controller
                 if (!is_null($val) && !empty($val)) {
                     $appMeta->meta_value = $val;
                 } else {
-                    $error =  $error.'Input incomplete.<br>';
+                    $error =  'Error: <br>Input incomplete.<br>';
                     return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error)->withInput();
                 }
             }
