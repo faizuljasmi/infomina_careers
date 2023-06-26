@@ -161,8 +161,8 @@ class ApplicationController extends Controller
                     return redirect()->route('create-application', ['vacancy' => $vacancy])->with('error', $error)->withInput();
                 }
             }
-            $appMeta->save();
         }
+        $appMeta->save();
 
         $users = User::all();
         foreach ($users as $user) {
