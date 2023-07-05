@@ -23,7 +23,7 @@ class VacancyController extends Controller
         if($vacancy->is_frontpage == "Yes"){
             return view('vacancy.view')->with(compact('vacancy'));
         }
-        return redirect()->route('homepage')->with('message', "Ops, we don't think you should see that.");
+        return redirect()->route('homepage')->with('error', "We don't think you should see that.");
     }
 
     public function index_admin(){
