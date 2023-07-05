@@ -28,8 +28,8 @@ class VacancyController extends Controller
 
     public function index_admin(){
         $user = auth()->user();
-        $vacancies = Vacancy::where('is_active', 'Yes')->paginate(10);
-        $inactive_vacancies = Vacancy::where('is_active', 'No')->paginate(10);
+        $vacancies = Vacancy::where('is_active', 'Yes')->orderBy('created_at','DESC')->paginate(10);
+        $inactive_vacancies = Vacancy::where('is_active', 'No')->orderBy('created_at','DESC')->paginate(10);
         return view('admin.vacancy.index')->with(compact('user','vacancies','inactive_vacancies'));
     }
 
