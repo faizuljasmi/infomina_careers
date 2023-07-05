@@ -175,7 +175,6 @@ class ApplicationController extends Controller
             }
         }
         
-
         $users = User::all();
         foreach ($users as $user) {
             Mail::to($user->email)->send(new NewApplication($app));

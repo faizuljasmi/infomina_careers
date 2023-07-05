@@ -16,7 +16,7 @@ use App\Vacancy;
 
 Route::get('/', function () {
     $user = auth()->user();
-    $vacancies = Vacancy::where('is_active','Yes')->orderBy('created_at', 'desc')->paginate(10);
+    $vacancies = Vacancy::where('is_active','Yes')->where('is_frontpage','Yes')->orderBy('created_at', 'desc')->paginate(10);
     return view('welcome')->with(compact('vacancies','user'));
 })->name('homepage');
 
@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/vacancies/view/{vacancy}','VacancyController@view_admin')->name('admin-view-vacancy');
     Route::get('/vacancies/edit/{vacancy}','VacancyController@edit_admin')->name('admin-edit-vacancy');
     Route::get('/vacancies/delete/{vacancy}','VacancyController@destroy')->name('admin-delete-vacancy');
+    Route::get('/vacancies/isfrontpage/{vacancy}','VacancyController@toggle_frontpage')->name('admin-frontpage-vacancy');
     Route::post('/vacancies/update/{vacancy}','VacancyController@update_admin')->name('admin-update-vacancy');
 
     Route::get('/applications','ApplicationController@index_admin')->name('admin-view-applications');

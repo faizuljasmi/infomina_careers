@@ -20,7 +20,10 @@ class VacancyController extends Controller
     }
 
     public function view(Vacancy $vacancy){
-        return view('vacancy.view')->with(compact('vacancy'));
+        if($vacancy->is_frontpage == "Yes"){
+            return view('vacancy.view')->with(compact('vacancy'));
+        }
+        return redirect()->route('homepage')->with('message', "Ops, we don't think you should see that.");
     }
 
     public function index_admin(){
@@ -155,5 +158,16 @@ class VacancyController extends Controller
         $vacancy->is_active = "No";
         $vacancy->save();
         return redirect()->route('admin-view-vacancies')->with('message', "Vacancy deleted successfully");
+    }
+
+    public function toggle_frontpage(Vacancy $vacancy){
+        if($vacancy->is_frontpage == "Yes"){
+            $vacancy->is_frontpage = "No";
+            $vacancy->save();
+            return redirect()->route('admin-view-vacancies')->with('message', "Vacancy published on frontpage successfully");
+        }
+        $vacancy->is_frontpage = "Yes";
+            $vacancy->save();
+            return redirect()->route('admin-view-vacancies')->with('message', "Vacancy hidden on frontpage successfully");
     }
 }

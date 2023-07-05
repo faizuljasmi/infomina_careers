@@ -23,7 +23,7 @@ class HomeController extends Controller
      * @return \Illuminate\View\View
      */
     public function index()
-    {   $vacancies = Vacancy::paginate(5);
+    {   $vacancies = Vacancy::orderBy('created_at','DESC')->paginate(5);
         $applications = Application::orderBy('created_at','DESC')->where('is_eform','No')->paginate(5);
         $eforms = Application::orderBy('created_at','DESC')->where('is_eform','Yes')->paginate(5);
         $processed_apl = Application::where('status', 'Processed')->get();
