@@ -9,6 +9,10 @@
 <script>
     var hasMessage = true;
 </script>
+@elseif(session()->has('error'))
+<script>
+    var hasError = true;
+</script>
 @endif
 <div class="content col-md-12 ml-auto mr-auto">
     <div class="header py-5 pb-7 pt-lg-9">
@@ -100,6 +104,27 @@
             <div class="modal-body text-center">
                 {!! strip_tags(session()->get('message')) !!}
                 <h5> {!! strip_tags(session()->get('apl_num')) !!}</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModalCenter" tabindex="-1" role="dialog" aria-labelledby="errorModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="errorModalLongTitle">Ops...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                {!! strip_tags(session()->get('message')) !!}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -218,6 +243,9 @@
             demo.checkFullPageBackgroundImage();
             if(hasMessage == true){
                 $("#successModalCenter").modal({ show : true });
+            }
+            if(hasError == true){
+                $("#errorModalCenter").modal({ show : true });
             }
         });
 
