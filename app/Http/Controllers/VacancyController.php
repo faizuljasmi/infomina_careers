@@ -164,10 +164,10 @@ class VacancyController extends Controller
         if($vacancy->is_frontpage == "Yes"){
             $vacancy->is_frontpage = "No";
             $vacancy->save();
-            return redirect()->route('admin-view-vacancies')->with('message', "Vacancy published on frontpage successfully");
+            return redirect()->route('admin-view-vacancies')->with('message', "Vacancy hidden on frontpage successfully");
         }
         $vacancy->is_frontpage = "Yes";
             $vacancy->save();
-            return redirect()->route('admin-view-vacancies')->with('message', "Vacancy hidden on frontpage successfully");
+            return redirect()->route('admin-view-vacancies')->with('message', "Vacancy published on frontpage successfully");
     }
 }
