@@ -51,6 +51,7 @@
                                                         <th>Location</th>
                                                         <th>Type</th>
                                                         <th>Published</th>
+                                                        <th>Updated</th>
                                                         <th>Action</th>
                                                     </thead>
                                                     <tbody>
@@ -69,6 +70,7 @@
                                                                 @endif
                                                             </td>
                                                             <td>{{$vc->created_at->diffForHumans()}}</td>
+                                                            <td>{{$vc->updated_at->diffForHumans()}}</td>
                                                             <td><a href="{{ route('view-vacancy', $vc) }}"><button
                                                                         type="button"
                                                                         class="btn btn-primary">View</button></a></td>
